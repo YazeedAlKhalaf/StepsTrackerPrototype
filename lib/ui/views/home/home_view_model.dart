@@ -10,6 +10,8 @@ class HomeViewModel extends CustomBaseViewModel {
   final RouterService _routerService = locator<RouterService>();
   final FitnessService _fitnessService = locator<FitnessService>();
 
+  int get stepsGoal => 8000;
+
   Future<void> init() async {
     _fitnessService.init();
   }

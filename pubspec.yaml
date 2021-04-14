@@ -21,6 +21,7 @@ dependencies:
   cloud_firestore: ^1.0.4
 
   pedometer: ^2.1.0
+  font_awesome_flutter: ^9.0.0
 
 dev_dependencies:
   flutter_test:
