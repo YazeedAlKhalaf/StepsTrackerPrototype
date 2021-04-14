@@ -273,7 +273,8 @@ class HomeView extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   onTap: () async {
-                                                    // TODO: navigate to leaderboard view
+                                                    await model
+                                                        .navigateToLeaderboardView();
                                                   },
                                                   child: Padding(
                                                     padding:

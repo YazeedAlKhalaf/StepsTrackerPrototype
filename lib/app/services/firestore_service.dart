@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -52,6 +54,23 @@ class FirestoreService {
       await _usersCollection.doc(userId).update({
         "stepsCount": newStepsCount,
       });
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
+
+  /// [getLeaderboard] gets the leaderboard users from the database.
+  Future<dynamic> getLeaderboard() async {
+    try {
+      final QuerySnapshot querySnapshot =
+          await _usersCollection.orderBy("stepsCount", descending: true).get();
+
+      List<KUser> userList = <KUser>[];
+      querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
+        userList.add(KUser.fromMap(documentSnapshot.data()));
+      });
+
+      return userList;
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
     }

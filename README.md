@@ -14,7 +14,7 @@
 - [ ] Catalog for rewards
   - [ ] Each reward is linked to one partner
   - [ ] Buy rewards with health points
-- [ ] Leaderboard showing first 50 people in terms of steps since the app installation
+- [x] Leaderboard showing first 50 people in terms of steps since the app installation
 - [ ] Work in background mode
 - [ ] Support dark mode
 - [ ] Support Arabic and English languages

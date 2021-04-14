@@ -6,6 +6,8 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:steps_tracker/ui/views/home/home_view.dart' as _i3;
+import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart'
+    as _i6;
 import 'package:steps_tracker/ui/views/login/login_view.dart' as _i5;
 import 'package:steps_tracker/ui/views/register/register_view.dart' as _i4;
 import 'package:steps_tracker/ui/views/startup/startup_view.dart' as _i2;
@@ -26,6 +28,9 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
     },
     LoginRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i5.LoginView());
+    },
+    LeaderboardRoute.name: (entry) {
+      return _i1.AdaptivePage(entry: entry, child: _i6.LeaderboardView());
     }
   };
 
@@ -34,7 +39,8 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(StartupRoute.name, path: '/'),
         _i1.RouteConfig(HomeRoute.name, path: '/home-view'),
         _i1.RouteConfig(RegisterRoute.name, path: '/register-view'),
-        _i1.RouteConfig(LoginRoute.name, path: '/login-view')
+        _i1.RouteConfig(LoginRoute.name, path: '/login-view'),
+        _i1.RouteConfig(LeaderboardRoute.name, path: '/leaderboard-view')
       ];
 }
 
@@ -60,4 +66,10 @@ class LoginRoute extends _i1.PageRouteInfo {
   const LoginRoute() : super(name, path: '/login-view');
 
   static const String name = 'LoginRoute';
+}
+
+class LeaderboardRoute extends _i1.PageRouteInfo {
+  const LeaderboardRoute() : super(name, path: '/leaderboard-view');
+
+  static const String name = 'LeaderboardRoute';
 }

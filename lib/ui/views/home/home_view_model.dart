@@ -30,4 +30,10 @@ class HomeViewModel extends CustomBaseViewModel {
     );
     setBusy(false);
   }
+
+  Future<void> navigateToLeaderboardView() async {
+    await _routerService.router.push(
+      LeaderboardRoute(),
+    );
+  }
 }
