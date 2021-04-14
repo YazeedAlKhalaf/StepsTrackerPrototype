@@ -7,7 +7,7 @@
   - [x] phone number
 - [x] Show steps count
   - [x] from server
-- [ ] Get steps from device
+- [x] Get steps from device
 - [ ] Convert steps number into points that gets syncronized with the firebase cloud firestore
 - [ ] Show a visual when user earns points
 - [ ] Show a history of transactions

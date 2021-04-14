@@ -41,5 +41,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSMotionUsageDescription</key>
+	<string>Steps Tracker tracks your steps so you get rewards!</string>
+	<key>UIBackgroundModes</key>
+	<array>
+	    <string>processing</string>
+	</array>
 </dict>
 </plist>

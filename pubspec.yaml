@@ -20,6 +20,8 @@ dependencies:
   firebase_auth: ^1.1.0
   cloud_firestore: ^1.0.4
 
+  pedometer: ^2.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

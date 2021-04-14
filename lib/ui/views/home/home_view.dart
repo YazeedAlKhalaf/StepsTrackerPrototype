@@ -9,6 +9,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
+      onModelReady: (HomeViewModel model) async {
+        await model.init();
+      },
       builder: (
         BuildContext context,
         HomeViewModel model,
@@ -31,12 +34,21 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  "Steps: ${model.currentUser?.stepsCount ?? ""}",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                  ),
+                StreamBuilder<int>(
+                  stream: model.getStepsCountStream(),
+                  builder: (
+                    BuildContext context,
+                    AsyncSnapshot<int> snapshot,
+                  ) {
+                    final int stepsCount = snapshot.data;
+                    return Text(
+                      "Steps: ${stepsCount ?? 0}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton.icon(

@@ -43,4 +43,17 @@ class FirestoreService {
       return ErrorService.handleFirestoreExceptions(exception);
     }
   }
+
+  Future<dynamic> updateStepsCount({
+    @required String userId,
+    @required int newStepsCount,
+  }) async {
+    try {
+      await _usersCollection.doc(userId).update({
+        "stepsCount": newStepsCount,
+      });
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
 }
