@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "130289685747-2lo7bf5nq01cbukn64odfvin2i4a9am4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.alkhalaf.steps_tracker",
+            "certificate_hash": "f7bc4ef7adaa951eb1dfae46b12e3121cb977a26"
+          }
+        },
+        {
+          "client_id": "130289685747-qdf91jhr6401cs9chn510par317ndn8i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.alkhalaf.steps_tracker",
+            "certificate_hash": "c3ce32eb704e3ea8a8b2166f3dc6fd10190dc015"
+          }
+        },
+        {
           "client_id": "130289685747-g9bgsd9pg22qf4hl7t4ft0bn18q5b9p3.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +45,13 @@
             {
               "client_id": "130289685747-g9bgsd9pg22qf4hl7t4ft0bn18q5b9p3.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "130289685747-is0kthphnkpdqvl0j8mo5rb8ofo7cgks.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.alkhalaf.stepsTracker"
+              }
             }
           ]
         }
