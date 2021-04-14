@@ -2,10 +2,12 @@
 
 ## Features
 
-- [ ] Login and Register with phone number
-  - [ ] name
-  - [ ] phone number
-- [ ] Show steps count
+- [x] Login and Register with phone number
+  - [x] name
+  - [x] phone number
+- [x] Show steps count
+  - [x] from server
+- [ ] Get steps from device
 - [ ] Convert steps number into points that gets syncronized with the firebase cloud firestore
 - [ ] Show a visual when user earns points
 - [ ] Show a history of transactions
@@ -18,7 +20,7 @@
 - [ ] Support Arabic and English languages
 - [ ] Give a fancy name for the health points, e.g. "Run Coins" 😂
 - [ ] Support null-safety
-- [ ] Strong security rules for cloud firestore
+- [x] Strong security rules for cloud firestore
 
 ## Requirements
 
