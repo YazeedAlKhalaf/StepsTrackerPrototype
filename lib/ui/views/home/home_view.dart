@@ -40,13 +40,32 @@ class HomeView extends StatelessWidget {
                     BuildContext context,
                     AsyncSnapshot<int> snapshot,
                   ) {
-                    final int stepsCount = snapshot.data;
-                    return Text(
-                      "Steps: ${stepsCount ?? 0}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
+                    /// this means there is an error.
+                    if (snapshot.hasError) {
+                      return Text(
+                        "Something went wrong!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      );
+                    }
+
+                    /// this means there is data.
+                    if (snapshot.hasData) {
+                      final int stepsCount = snapshot.data;
+                      return Text(
+                        "Steps: ${stepsCount ?? 0}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      );
+                    }
+
+                    /// this means data is loading.
+                    return Center(
+                      child: CircularProgressIndicator(),
                     );
                   },
                 ),
