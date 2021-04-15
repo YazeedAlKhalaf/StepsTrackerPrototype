@@ -38,6 +38,7 @@ class FitnessService {
   /// handles steps count errors, triggered by listening
   /// to the [_stepCountStream].
   void _onStepCountError(error) {
+    _stepsCountController.addError(error);
     log(
       "Steps Count Error: $error",
       name: "steps_tracker/FitnessService",

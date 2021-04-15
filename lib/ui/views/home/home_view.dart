@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
@@ -74,11 +75,15 @@ class HomeView extends StatelessWidget {
                             /// this means there is an error.
                             if (snapshot.hasError) {
                               return Text(
-                                "Something went wrong!",
+                                snapshot.error is PlatformException
+                                    ? "Your device doesn't\nsupport steps tracking! 😢"
+                                    : "Something went wrong!",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontSize: 20,
                                 ),
+                                textAlign: TextAlign.center,
                               );
                             }
 
