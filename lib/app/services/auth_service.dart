@@ -48,7 +48,7 @@ class AuthService {
             await populateCurrentUser();
           }
           await _routerService.router.pushAndRemoveUntil(
-            HomeRoute(),
+            MainRoute(),
             predicate: (_) => false,
           );
         },

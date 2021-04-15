@@ -179,7 +179,7 @@ class RegisterViewModel extends CustomBaseViewModel {
         /// go to home view
         await goBack();
         await _routerService.router.pushAndRemoveUntil(
-          HomeRoute(),
+          MainRoute(),
           predicate: (_) => false,
         );
       }

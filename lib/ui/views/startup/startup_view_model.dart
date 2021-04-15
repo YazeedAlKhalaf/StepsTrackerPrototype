@@ -14,7 +14,7 @@ class StartupViewModel extends CustomBaseViewModel {
       await _authService.populateCurrentUser();
       await Future.delayed(Duration(seconds: 1));
       await _routerService.router.pushAndRemoveUntil(
-        HomeRoute(),
+        MainRoute(),
         predicate: (_) => false,
       );
       return;
