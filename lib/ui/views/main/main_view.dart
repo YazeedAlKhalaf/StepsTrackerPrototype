@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
+import 'package:steps_tracker/ui/views/account/account_view.dart';
 import 'package:steps_tracker/ui/views/home/home_view.dart';
 import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart';
 
@@ -21,9 +22,13 @@ class MainView extends StatelessWidget {
             child: IndexedStack(
               index: model.currentIndex,
               children: <Widget>[
-                HomeView(),
+                HomeView(
+                  onSeeLeaderboardPressed: () {
+                    model.setCurrentIndex(1);
+                  },
+                ),
                 LeaderboardView(),
-                Center(child: Text("Account View")),
+                AccountView(),
               ],
             ),
           ),

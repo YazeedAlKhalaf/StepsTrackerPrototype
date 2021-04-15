@@ -5,6 +5,8 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:flutter/material.dart' as _i9;
+import 'package:steps_tracker/ui/views/account/account_view.dart' as _i8;
 import 'package:steps_tracker/ui/views/home/home_view.dart' as _i3;
 import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart'
     as _i6;
@@ -22,7 +24,13 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
       return _i1.AdaptivePage(entry: entry, child: _i2.StartupView());
     },
     HomeRoute.name: (entry) {
-      return _i1.AdaptivePage(entry: entry, child: _i3.HomeView());
+      var args =
+          entry.routeData.argsAs<HomeRouteArgs>(orElse: () => HomeRouteArgs());
+      return _i1.AdaptivePage(
+          entry: entry,
+          child: _i3.HomeView(
+              key: args.key,
+              onSeeLeaderboardPressed: args.onSeeLeaderboardPressed));
     },
     RegisterRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i4.RegisterView());
@@ -35,6 +43,9 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
     },
     MainRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i7.MainView());
+    },
+    AccountRoute.name: (entry) {
+      return _i1.AdaptivePage(entry: entry, child: _i8.AccountView());
     }
   };
 
@@ -45,7 +56,8 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(RegisterRoute.name, path: '/register-view'),
         _i1.RouteConfig(LoginRoute.name, path: '/login-view'),
         _i1.RouteConfig(LeaderboardRoute.name, path: '/leaderboard-view'),
-        _i1.RouteConfig(MainRoute.name, path: '/main-view')
+        _i1.RouteConfig(MainRoute.name, path: '/main-view'),
+        _i1.RouteConfig(AccountRoute.name, path: '/account-view')
       ];
 }
 
@@ -55,10 +67,22 @@ class StartupRoute extends _i1.PageRouteInfo {
   static const String name = 'StartupRoute';
 }
 
-class HomeRoute extends _i1.PageRouteInfo {
-  const HomeRoute() : super(name, path: '/home-view');
+class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({_i9.Key key, void Function() onSeeLeaderboardPressed})
+      : super(name,
+            path: '/home-view',
+            args: HomeRouteArgs(
+                key: key, onSeeLeaderboardPressed: onSeeLeaderboardPressed));
 
   static const String name = 'HomeRoute';
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({this.key, this.onSeeLeaderboardPressed});
+
+  final _i9.Key key;
+
+  final void Function() onSeeLeaderboardPressed;
 }
 
 class RegisterRoute extends _i1.PageRouteInfo {
@@ -83,4 +107,10 @@ class MainRoute extends _i1.PageRouteInfo {
   const MainRoute() : super(name, path: '/main-view');
 
   static const String name = 'MainRoute';
+}
+
+class AccountRoute extends _i1.PageRouteInfo {
+  const AccountRoute() : super(name, path: '/account-view');
+
+  static const String name = 'AccountRoute';
 }

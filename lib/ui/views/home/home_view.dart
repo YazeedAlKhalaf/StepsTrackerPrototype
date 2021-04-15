@@ -8,6 +8,13 @@ import 'package:steps_tracker/ui/widgets/custom_ring.dart';
 import './home_view_model.dart';
 
 class HomeView extends StatelessWidget {
+  final void Function() onSeeLeaderboardPressed;
+
+  const HomeView({
+    Key key,
+    @required this.onSeeLeaderboardPressed,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
@@ -277,10 +284,8 @@ class HomeView extends StatelessWidget {
                                                 InkWell(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  onTap: () async {
-                                                    await model
-                                                        .navigateToLeaderboardView();
-                                                  },
+                                                  onTap:
+                                                      onSeeLeaderboardPressed,
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.all(
@@ -327,30 +332,6 @@ class HomeView extends StatelessWidget {
                       ],
                     ),
                   ],
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton.icon(
-                  onPressed: () async {
-                    await model.signOut();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: KColors.orange,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  icon: Icon(
-                    Icons.exit_to_app_rounded,
-                  ),
-                  label: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Text(
-                      "Sign Out",
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
