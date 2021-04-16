@@ -5,6 +5,7 @@ import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart';
 import 'package:steps_tracker/ui/views/login/login_view.dart';
 import 'package:steps_tracker/ui/views/main/main_view.dart';
 import 'package:steps_tracker/ui/views/register/register_view.dart';
+import 'package:steps_tracker/ui/views/rewards/rewards_view.dart';
 import 'package:steps_tracker/ui/views/startup/startup_view.dart';
 
 export './router.gr.dart';
@@ -19,6 +20,7 @@ export './router.gr.dart';
     AutoRoute(page: LeaderboardView),
     AutoRoute(page: MainView),
     AutoRoute(page: AccountView),
+    AutoRoute(page: RewardsView),
   ],
 )
 class $StepsTrackerRouter {}

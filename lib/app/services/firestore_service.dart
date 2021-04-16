@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:steps_tracker/app/models/k_reward.dart';
 import 'package:steps_tracker/app/models/k_user.dart';
 import 'package:steps_tracker/app/services/error_service.dart';
 import 'package:steps_tracker/app/utils/constants.dart';
@@ -14,6 +15,9 @@ class FirestoreService {
 
   final CollectionReference _usersCollection = _firebaseFirestore.collection(
     Constants.usersCollectionName,
+  );
+  final CollectionReference _rewardsCollection = _firebaseFirestore.collection(
+    Constants.rewardsCollectionName,
   );
 
   /// create user with provided user model.
@@ -71,6 +75,23 @@ class FirestoreService {
       });
 
       return userList;
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
+
+  /// [getRewards] gets all the rewards.
+  Future<dynamic> getRewards() async {
+    try {
+      final QuerySnapshot querySnapshot =
+          await _rewardsCollection.orderBy("createdAt", descending: true).get();
+
+      List<KReward> rewardList = <KReward>[];
+      querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
+        rewardList.add(KReward.fromMap(documentSnapshot.data()));
+      });
+
+      return rewardList;
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
     }

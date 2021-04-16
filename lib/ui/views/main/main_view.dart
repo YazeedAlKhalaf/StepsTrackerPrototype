@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:steps_tracker/ui/views/account/account_view.dart';
 import 'package:steps_tracker/ui/views/home/home_view.dart';
 import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart';
+import 'package:steps_tracker/ui/views/rewards/rewards_view.dart';
 
 import './main_view_model.dart';
 
@@ -28,6 +29,7 @@ class MainView extends StatelessWidget {
                   },
                 ),
                 LeaderboardView(),
+                RewardsView(),
                 AccountView(),
               ],
             ),
@@ -37,6 +39,7 @@ class MainView extends StatelessWidget {
             onTap: (int newIndex) {
               model.setCurrentIndex(newIndex);
             },
+            type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
@@ -49,6 +52,12 @@ class MainView extends StatelessWidget {
                   FontAwesomeIcons.trophy,
                 ),
                 label: "Leaderboard",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.award,
+                ),
+                label: "Rewards",
               ),
               BottomNavigationBarItem(
                 icon: Icon(

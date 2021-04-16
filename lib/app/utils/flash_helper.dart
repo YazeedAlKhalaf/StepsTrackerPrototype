@@ -162,41 +162,90 @@ class FlashHelper {
     );
   }
 
+  // static Future<T> simpleDialog<T>(
+  //   BuildContext context, {
+  //   @required String title,
+  //   @required String message,
+  //   Color messageColor,
+  //   List<Widget> actions,
+  // }) {
+  //   return showFlash<T>(
+  //     context: context,
+  //     persistent: false,
+  //     builder: (
+  //       BuildContext context,
+  //       FlashController<T> controller,
+  //     ) {
+  //       return Flash<T>.dialog(
+  //         controller: controller,
+  //         backgroundColor: _backgroundColor(context),
+  //         margin: const EdgeInsets.only(
+  //           left: 40.0,
+  //           right: 40.0,
+  //         ),
+  //         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+  //         child: FlashBar(
+  //           title: Text(
+  //             title,
+  //             style: _titleStyle(context),
+  //           ),
+  //           message: Text(
+  //             message,
+  //             style: _contentStyle(context, messageColor),
+  //           ),
+  //           actions: actions,
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
   static Future<T> simpleDialog<T>(
     BuildContext context, {
-    @required String title,
+    String title,
     @required String message,
     Color messageColor,
-    List<Widget> actions,
+    ChildBuilder<T> negativeAction,
+    ChildBuilder<T> positiveAction,
   }) {
     return showFlash<T>(
       context: context,
-      persistent: false,
-      builder: (
-        BuildContext context,
-        FlashController<T> controller,
-      ) {
-        return Flash<T>.dialog(
-          controller: controller,
-          backgroundColor: _backgroundColor(context),
-          margin: const EdgeInsets.only(
-            left: 40.0,
-            right: 40.0,
-          ),
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-          child: FlashBar(
-            title: Text(
-              title,
-              style: _titleStyle(context),
-            ),
-            message: Text(
-              message,
-              style: _contentStyle(context, messageColor),
-            ),
-            actions: actions,
-          ),
+      persistent: true,
+      builder: (context, controller) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Flash.dialog(
+              controller: controller,
+              boxShadows: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  offset: Offset(0, 0),
+                  blurRadius: 10,
+                  spreadRadius: 3,
+                ),
+              ],
+              backgroundColor: _backgroundColor(context),
+              margin: const EdgeInsets.only(left: 40.0, right: 40.0),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+              child: FlashBar(
+                title: title == null
+                    ? null
+                    : Text(title, style: _titleStyle(context)),
+                message:
+                    Text(message, style: _contentStyle(context, messageColor)),
+                actions: <Widget>[
+                  if (negativeAction != null)
+                    negativeAction(context, controller, setState),
+                  if (positiveAction != null)
+                    positiveAction(context, controller, setState),
+                ],
+              ),
+            );
+          },
         );
       },
     );
   }
 }
+
+typedef ChildBuilder<T> = Widget Function(
+    BuildContext context, FlashController<T> controller, StateSetter setState);

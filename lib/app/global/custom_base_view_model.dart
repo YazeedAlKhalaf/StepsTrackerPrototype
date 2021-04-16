@@ -20,4 +20,8 @@ abstract class CustomBaseViewModel extends BaseViewModel {
   void removeFocus() {
     FocusManager.instance.primaryFocus.unfocus();
   }
+
+  Future<void> refreshUserData() async {
+    await _authService.populateCurrentUser();
+  }
 }
