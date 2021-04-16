@@ -47,26 +47,42 @@ class LeaderboardView extends StatelessWidget {
                 if (snapshot.hasData) {
                   final List<KUser> usersList = snapshot.data;
 
-                  return RefreshIndicator(
-                    onRefresh: () async {
-                      model.notifyListeners();
-                    },
-                    child: ListView.builder(
-                      itemCount: usersList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final KUser user = usersList[index];
+                  return Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          "Top 50",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: RefreshIndicator(
+                          onRefresh: () async {
+                            model.notifyListeners();
+                          },
+                          child: ListView.builder(
+                            itemCount: usersList.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              final KUser user = usersList[index];
 
-                        return ListTile(
-                          leading: Text("${index + 1}."),
-                          title: Text(
-                            "${user.firstName} ${user.lastName} ${model.currentUser.id == user.id ? "(You)" : ""}",
+                              return ListTile(
+                                leading: Text("${index + 1}."),
+                                title: Text(
+                                  "${user.firstName} ${user.lastName} ${model.currentUser.id == user.id ? "(You)" : ""}",
+                                ),
+                                trailing: Text(
+                                  "${user.stepsCount}",
+                                ),
+                              );
+                            },
                           ),
-                          trailing: Text(
-                            "${user.stepsCount}",
-                          ),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    ],
                   );
                 }
 

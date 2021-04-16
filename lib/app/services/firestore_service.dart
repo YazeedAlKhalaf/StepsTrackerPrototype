@@ -66,8 +66,10 @@ class FirestoreService {
   /// [getLeaderboard] gets the leaderboard users from the database.
   Future<dynamic> getLeaderboard() async {
     try {
-      final QuerySnapshot querySnapshot =
-          await _usersCollection.orderBy("stepsCount", descending: true).get();
+      final QuerySnapshot querySnapshot = await _usersCollection
+          .orderBy("stepsCount", descending: true)
+          .limit(50)
+          .get();
 
       List<KUser> userList = <KUser>[];
       querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
