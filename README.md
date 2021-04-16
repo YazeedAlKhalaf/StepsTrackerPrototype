@@ -8,11 +8,11 @@
 - [x] Show steps count
   - [x] from server
 - [x] Get steps from device
-- [ ] Convert steps number into points that gets syncronized with the firebase cloud firestore
+- [x] Convert steps number into points that gets syncronized with the firebase cloud firestore
 - [ ] Show a visual when user earns points
 - [ ] Show a history of transactions
-- [ ] Catalog for rewards
-  - [ ] Each reward is linked to one partner
+- [x] Catalog for rewards
+  - [x] Each reward is linked to one partner
   - [ ] Buy rewards with health points
 - [x] Leaderboard showing first 50 people in terms of steps since the app installation
 - [ ] Work in background mode
