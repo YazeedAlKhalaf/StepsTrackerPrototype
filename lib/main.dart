@@ -5,9 +5,6 @@ import 'package:steps_tracker/app/services/firebase_service.dart';
 import 'package:steps_tracker/app/steps_tracker_app.dart';
 
 Future<void> main() async {
-  /// general todos
-  // TODO: add iOS config firebase
-
   /// make sure the glue that binds the framework to the Flutter engine
   /// is initialized.
   WidgetsFlutterBinding.ensureInitialized();

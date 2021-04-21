@@ -19,6 +19,7 @@ dependencies:
   firebase_core: ^1.0.3
   firebase_auth: ^1.1.0
   cloud_firestore: ^1.0.4
+  firebase_messaging: ^9.1.2
 
   pedometer: ^2.1.0
   font_awesome_flutter: ^9.0.0
