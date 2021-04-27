@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
                           colors: <Color>[
                             KColors.orange,
                             KColors.orange,
-                            Colors.white,
+                            Theme.of(context).scaffoldBackgroundColor,
                           ],
                           stops: [
                             0.0,
