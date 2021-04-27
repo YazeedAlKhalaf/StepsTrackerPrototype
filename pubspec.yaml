@@ -23,6 +23,7 @@ dependencies:
 
   pedometer: ^2.1.0
   font_awesome_flutter: ^9.0.0
+  theme_mode_builder: ^1.0.0
 
 dev_dependencies:
   flutter_test:

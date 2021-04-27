@@ -22,4 +22,8 @@ class AccountViewModel extends CustomBaseViewModel {
   Future<void> navigateToHistoryView() async {
     await _routerService.router.push(HistoryRoute());
   }
+
+  Future<void> navigateToSettingsView() async {
+    await _routerService.router.push(SettingsRoute());
+  }
 }

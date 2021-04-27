@@ -16,7 +16,7 @@
   - [ ] Buy rewards with health points
 - [x] Leaderboard showing first 50 people in terms of steps since the app installation
 - [ ] Work in background mode
-- [ ] Support dark mode
+- [x] Support dark mode
 - [ ] Support Arabic and English languages
 - [ ] Give a fancy name for the health points, e.g. "Run Coins" 😂
 - [ ] Support null-safety

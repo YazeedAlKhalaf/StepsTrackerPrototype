@@ -129,6 +129,22 @@ class AccountView extends StatelessWidget {
                                 await model.navigateToHistoryView();
                               },
                             ),
+                            ListTile(
+                              leading: Icon(
+                                FontAwesomeIcons.cog,
+                                color: KColors.orange,
+                              ),
+                              title: Text(
+                                "Settings",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              onTap: () async {
+                                await model.navigateToSettingsView();
+                              },
+                            ),
                           ],
                         ),
                       ),
