@@ -20,7 +20,9 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
       onModelReady: (HomeViewModel model) async {
-        await model.init();
+        await model.init(
+          context: context,
+        );
       },
       builder: (
         BuildContext context,
@@ -97,7 +99,10 @@ class HomeView extends StatelessWidget {
                             /// this means there is data.
                             if (snapshot.hasData) {
                               final int stepsCount = snapshot.data;
-                              final int stepsGoal = 8000;
+                              final int stepsGoal = model.stepsGoal;
+
+                              model.stepsCountLocal.add(stepsCount);
+
                               return Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 15),

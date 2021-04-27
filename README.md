@@ -9,7 +9,7 @@
   - [x] from server
 - [x] Get steps from device
 - [x] Convert steps number into points that gets syncronized with the firebase cloud firestore
-- [ ] Show a visual when user earns points
+- [x] Show a visual when user earns points
 - [ ] Show a history of transactions
 - [x] Catalog for rewards
   - [x] Each reward is linked to one partner
