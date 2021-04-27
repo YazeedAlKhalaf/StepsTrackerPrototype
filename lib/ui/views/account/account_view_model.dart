@@ -18,4 +18,8 @@ class AccountViewModel extends CustomBaseViewModel {
     );
     setBusy(false);
   }
+
+  Future<void> navigateToHistoryView() async {
+    await _routerService.router.push(HistoryRoute());
+  }
 }

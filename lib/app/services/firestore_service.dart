@@ -120,4 +120,27 @@ class FirestoreService {
       return ErrorService.handleFirestoreExceptions(exception);
     }
   }
+
+  /// [getHistoryItems] gets all history items of current user.
+  Future<dynamic> getHistoryItems({
+    @required String userId,
+  }) async {
+    try {
+      final QuerySnapshot querySnapshot = await _usersCollection
+          .doc(userId)
+          .collection(Constants.historyCollectionName)
+          .orderBy("createdAt", descending: true)
+          .get();
+
+      List<KHistoryItem> historyItems = <KHistoryItem>[];
+
+      querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
+        historyItems.add(KHistoryItem.fromMap(documentSnapshot.data()));
+      });
+
+      return <KHistoryItem>[];
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
 }

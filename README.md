@@ -10,7 +10,7 @@
 - [x] Get steps from device
 - [x] Convert steps number into points that gets syncronized with the firebase cloud firestore
 - [x] Show a visual when user earns points
-- [ ] Show a history of transactions
+- [x] Show a history of transactions
 - [x] Catalog for rewards
   - [x] Each reward is linked to one partner
   - [ ] Buy rewards with health points

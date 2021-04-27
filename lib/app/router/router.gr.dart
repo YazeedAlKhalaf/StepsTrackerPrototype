@@ -5,8 +5,9 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/material.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
 import 'package:steps_tracker/ui/views/account/account_view.dart' as _i8;
+import 'package:steps_tracker/ui/views/history/history_view.dart' as _i10;
 import 'package:steps_tracker/ui/views/home/home_view.dart' as _i3;
 import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart'
     as _i6;
@@ -50,6 +51,9 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
     },
     RewardsRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i9.RewardsView());
+    },
+    HistoryRoute.name: (entry) {
+      return _i1.AdaptivePage(entry: entry, child: _i10.HistoryView());
     }
   };
 
@@ -62,7 +66,8 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(LeaderboardRoute.name, path: '/leaderboard-view'),
         _i1.RouteConfig(MainRoute.name, path: '/main-view'),
         _i1.RouteConfig(AccountRoute.name, path: '/account-view'),
-        _i1.RouteConfig(RewardsRoute.name, path: '/rewards-view')
+        _i1.RouteConfig(RewardsRoute.name, path: '/rewards-view'),
+        _i1.RouteConfig(HistoryRoute.name, path: '/history-view')
       ];
 }
 
@@ -73,7 +78,7 @@ class StartupRoute extends _i1.PageRouteInfo {
 }
 
 class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({_i10.Key key, void Function() onSeeLeaderboardPressed})
+  HomeRoute({_i11.Key key, void Function() onSeeLeaderboardPressed})
       : super(name,
             path: '/home-view',
             args: HomeRouteArgs(
@@ -85,7 +90,7 @@ class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
 class HomeRouteArgs {
   const HomeRouteArgs({this.key, this.onSeeLeaderboardPressed});
 
-  final _i10.Key key;
+  final _i11.Key key;
 
   final void Function() onSeeLeaderboardPressed;
 }
@@ -124,4 +129,10 @@ class RewardsRoute extends _i1.PageRouteInfo {
   const RewardsRoute() : super(name, path: '/rewards-view');
 
   static const String name = 'RewardsRoute';
+}
+
+class HistoryRoute extends _i1.PageRouteInfo {
+  const HistoryRoute() : super(name, path: '/history-view');
+
+  static const String name = 'HistoryRoute';
 }

@@ -125,7 +125,9 @@ class AccountView extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              onTap: () async {},
+                              onTap: () async {
+                                await model.navigateToHistoryView();
+                              },
                             ),
                           ],
                         ),
