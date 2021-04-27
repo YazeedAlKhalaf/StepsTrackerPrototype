@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:steps_tracker/app/models/k_history_item.dart';
 import 'package:steps_tracker/app/models/k_reward.dart';
 import 'package:steps_tracker/app/models/k_user.dart';
 import 'package:steps_tracker/app/services/error_service.dart';
@@ -94,6 +95,27 @@ class FirestoreService {
       });
 
       return rewardList;
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
+
+  /// [addHistoryItem] adds a history item for the current user.
+  /// provide the [historyItem] with a `null` value for `id`, will be filled
+  /// before pushing to firebase firestore.
+  Future<dynamic> addHistoryItem({
+    @required String userId,
+    @required KHistoryItem historyItem,
+  }) async {
+    try {
+      final DocumentReference documentReference = _usersCollection
+          .doc(userId)
+          .collection(Constants.historyCollectionName)
+          .doc();
+
+      await documentReference.set(
+        historyItem.copyWith(id: documentReference.id).toMap(),
+      );
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
     }
