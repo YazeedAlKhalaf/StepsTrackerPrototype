@@ -138,7 +138,7 @@ class FirestoreService {
         historyItems.add(KHistoryItem.fromMap(documentSnapshot.data()));
       });
 
-      return <KHistoryItem>[];
+      return historyItems;
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
     }
