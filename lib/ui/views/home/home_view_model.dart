@@ -66,7 +66,6 @@ class HomeViewModel extends CustomBaseViewModel {
       historyItem: KHistoryItem(
         id: null,
         amount: 1,
-        isIncrease: true,
         rewardAtTimeOfTransaction: null,
         createdAt: Timestamp.now(),
       ),

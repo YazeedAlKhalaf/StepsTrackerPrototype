@@ -197,4 +197,37 @@ class FirestoreService {
       return ErrorService.handleFirestoreExceptions(exception);
     }
   }
+
+  /// [buyReward] buys a reward for the current user.
+  Future<dynamic> buyReward({
+    @required KUser user,
+    @required KReward reward,
+  }) async {
+    try {
+      if (user.healthPoints >= reward.price && reward.ownerId == null) {
+        /// buy the reward for the user.
+        await _rewardsCollection.doc(reward.id).update({
+          "ownerId": user.id,
+        });
+
+        /// decrease health points of user.
+        await _usersCollection.doc(user.id).update({
+          "healthPoints": FieldValue.increment(-reward.price),
+        });
+
+        /// add to history
+        await addHistoryItem(
+          userId: user.id,
+          historyItem: KHistoryItem(
+            id: null,
+            amount: reward.price,
+            rewardAtTimeOfTransaction: reward,
+            createdAt: Timestamp.now(),
+          ),
+        );
+      }
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
 }

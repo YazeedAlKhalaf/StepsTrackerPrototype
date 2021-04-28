@@ -13,7 +13,7 @@
 - [x] Show a history of transactions
 - [x] Catalog for rewards
   - [x] Each reward is linked to one partner
-  - [ ] Buy rewards with health points
+  - [x] Buy rewards with health points
 - [x] Leaderboard showing first 50 people in terms of steps since the app installation
 - [ ] Work in background mode
 - [x] Support dark mode

@@ -11,10 +11,12 @@ class KReward {
   final String couponCode;
   final List<String> images;
   final int price;
-  final bool isSold;
+  final String ownerId;
   final Timestamp createdAt;
 
-  const KReward({
+  bool get isSold => this.ownerId != null;
+
+  KReward({
     @required this.id,
     @required this.name,
     @required this.description,
@@ -22,7 +24,7 @@ class KReward {
     @required this.couponCode,
     @required this.images,
     @required this.price,
-    @required this.isSold,
+    @required this.ownerId,
     @required this.createdAt,
   });
 
@@ -34,7 +36,7 @@ class KReward {
     String couponCode,
     List<String> images,
     int price,
-    bool isSold,
+    String ownerId,
     Timestamp createdAt,
   }) {
     return KReward(
@@ -45,7 +47,7 @@ class KReward {
       couponCode: couponCode ?? this.couponCode,
       images: images ?? this.images,
       price: price ?? this.price,
-      isSold: isSold ?? this.isSold,
+      ownerId: ownerId ?? this.ownerId,
       createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -59,7 +61,7 @@ class KReward {
       'couponCode': couponCode,
       'images': images,
       'price': price,
-      'isSold': isSold,
+      'ownerId': ownerId,
       'createdAt': createdAt,
     };
   }
@@ -73,7 +75,7 @@ class KReward {
       couponCode: map['couponCode'],
       images: List<String>.from(map['images']),
       price: map['price'],
-      isSold: map['isSold'],
+      ownerId: map['ownerId'],
       createdAt: map['createdAt'],
     );
   }
@@ -85,7 +87,7 @@ class KReward {
 
   @override
   String toString() {
-    return 'KReward(id: $id, name: $name, description: $description, vendor: $vendor, couponCode: $couponCode, images: $images, price: $price, isSold: $isSold, createdAt: $createdAt)';
+    return 'KReward(id: $id, name: $name, description: $description, vendor: $vendor, couponCode: $couponCode, images: $images, price: $price, ownerId: $ownerId, createdAt: $createdAt)';
   }
 
   @override
@@ -100,7 +102,7 @@ class KReward {
         other.couponCode == couponCode &&
         listEquals(other.images, images) &&
         other.price == price &&
-        other.isSold == isSold &&
+        other.ownerId == ownerId &&
         other.createdAt == createdAt;
   }
 
@@ -113,7 +115,7 @@ class KReward {
         couponCode.hashCode ^
         images.hashCode ^
         price.hashCode ^
-        isSold.hashCode ^
+        ownerId.hashCode ^
         createdAt.hashCode;
   }
 }

@@ -43,4 +43,21 @@ class RewardsViewModel extends CustomBaseViewModel {
 
     setRewardList(response);
   }
+
+  Future<void> buyReward({
+    @required KReward reward,
+  }) async {
+    final dynamic response = await _firestoreService.buyReward(
+      user: currentUser,
+      reward: reward,
+    );
+
+    if (response is KError) {
+      FlashHelper.errorBar(
+        context,
+        message: response.userFriendlyMessage,
+      );
+      return;
+    }
+  }
 }

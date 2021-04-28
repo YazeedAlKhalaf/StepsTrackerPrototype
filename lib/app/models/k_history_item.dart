@@ -8,16 +8,16 @@ import 'package:steps_tracker/app/models/k_reward.dart';
 class KHistoryItem {
   final String id;
   final int amount;
-  final bool isIncrease;
 
   /// if the value is `null` this means no reward was bought with health points
   final KReward rewardAtTimeOfTransaction;
   final Timestamp createdAt;
 
+  bool get isIncrease => rewardAtTimeOfTransaction == null;
+
   const KHistoryItem({
     @required this.id,
     @required this.amount,
-    @required this.isIncrease,
     @required this.rewardAtTimeOfTransaction,
     @required this.createdAt,
   });
@@ -25,14 +25,12 @@ class KHistoryItem {
   KHistoryItem copyWith({
     String id,
     int amount,
-    bool isIncrease,
     KReward rewardAtTimeOfTransaction,
     Timestamp createdAt,
   }) {
     return KHistoryItem(
       id: id ?? this.id,
       amount: amount ?? this.amount,
-      isIncrease: isIncrease ?? this.isIncrease,
       rewardAtTimeOfTransaction:
           rewardAtTimeOfTransaction ?? this.rewardAtTimeOfTransaction,
       createdAt: createdAt ?? this.createdAt,
@@ -43,7 +41,6 @@ class KHistoryItem {
     return {
       'id': id,
       'amount': amount,
-      'isIncrease': isIncrease,
       'rewardAtTimeOfTransaction': rewardAtTimeOfTransaction?.toMap() ?? null,
       'createdAt': createdAt,
     };
@@ -53,9 +50,9 @@ class KHistoryItem {
     return KHistoryItem(
       id: map['id'],
       amount: map['amount'],
-      isIncrease: map['isIncrease'],
-      rewardAtTimeOfTransaction:
-          KReward.fromMap(map['rewardAtTimeOfTransaction']),
+      rewardAtTimeOfTransaction: map['rewardAtTimeOfTransaction'] == null
+          ? null
+          : KReward.fromMap(map['rewardAtTimeOfTransaction']),
       createdAt: map['createdAt'],
     );
   }
@@ -77,7 +74,6 @@ class KHistoryItem {
     return other is KHistoryItem &&
         other.id == id &&
         other.amount == amount &&
-        other.isIncrease == isIncrease &&
         other.rewardAtTimeOfTransaction == rewardAtTimeOfTransaction &&
         other.createdAt == createdAt;
   }
@@ -86,7 +82,6 @@ class KHistoryItem {
   int get hashCode {
     return id.hashCode ^
         amount.hashCode ^
-        isIncrease.hashCode ^
         rewardAtTimeOfTransaction.hashCode ^
         createdAt.hashCode;
   }

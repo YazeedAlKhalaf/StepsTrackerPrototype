@@ -146,9 +146,50 @@ class RewardsView extends StatelessWidget {
                                             child: Text(
                                               'Yes, Sure!',
                                             ),
-                                            onPressed: () {
+                                            onPressed: () async {
+                                              await model.refreshUserData();
+
+                                              if (model.currentUser
+                                                      .healthPoints <
+                                                  reward.price) {
+                                                FlashHelper.errorBar(
+                                                  context,
+                                                  message:
+                                                      "You don't have enough health points!",
+                                                );
+                                                return;
+                                              }
+
+                                              await model.buyReward(
+                                                reward: reward,
+                                              );
+
+                                              await model.refreshUserData();
+                                              await model.getRewards();
+
                                               controller.dismiss();
-                                              // TODO: do transaction and give user coupon code
+
+                                              FlashHelper.simpleDialog(
+                                                context,
+                                                title: "Congrats 🎉",
+                                                message:
+                                                    "Congrats! Here is your coupon code: ${reward.couponCode}.",
+                                                negativeAction: (
+                                                  BuildContext context,
+                                                  FlashController controller,
+                                                  void Function(void Function())
+                                                      setState,
+                                                ) {
+                                                  return TextButton(
+                                                    child: Text(
+                                                      'Ok!',
+                                                    ),
+                                                    onPressed: () {
+                                                      controller.dismiss();
+                                                    },
+                                                  );
+                                                },
+                                              );
                                             },
                                           );
                                         },
@@ -165,15 +206,45 @@ class RewardsView extends StatelessWidget {
                                 },
                               ),
                               if (reward.isSold)
-                                Card(
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color: KColors.blue.withOpacity(0.5),
-                                  child: Opacity(
-                                    opacity: 0,
-                                    child: _buildRewardContainer(),
+                                GestureDetector(
+                                  onTap: () {
+                                    if (reward.isSold &&
+                                        reward.ownerId ==
+                                            model.currentUser.id) {
+                                      FlashHelper.simpleDialog(
+                                        context,
+                                        title: "Congrats 🎉",
+                                        message:
+                                            "Congrats! Here is your coupon code: ${reward.couponCode}.",
+                                        negativeAction: (
+                                          BuildContext context,
+                                          FlashController controller,
+                                          void Function(void Function())
+                                              setState,
+                                        ) {
+                                          return TextButton(
+                                            child: Text(
+                                              'Ok!',
+                                            ),
+                                            onPressed: () {
+                                              controller.dismiss();
+                                            },
+                                          );
+                                        },
+                                      );
+                                      return;
+                                    }
+                                  },
+                                  child: Card(
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    color: KColors.blue.withOpacity(0.5),
+                                    child: Opacity(
+                                      opacity: 0,
+                                      child: _buildRewardContainer(),
+                                    ),
                                   ),
                                 ),
                               if (reward.isSold)
@@ -192,6 +263,26 @@ class RewardsView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                  ),
+                                ),
+                              if (reward.isSold &&
+                                  reward.ownerId == model.currentUser.id)
+                                Positioned(
+                                  bottom: 32.5,
+                                  child: Text(
+                                    "View Coupon Code",
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(0.5, 0.5),
+                                          blurRadius: 5,
+                                        ),
+                                      ],
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                             ],
