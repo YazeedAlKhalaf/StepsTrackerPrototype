@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:intl/intl.dart' as intl;
+
 import 'package:steps_tracker/app/models/k_history_item.dart';
 import 'package:steps_tracker/app/models/k_reward.dart';
 import 'package:steps_tracker/app/models/k_user.dart';
@@ -56,8 +58,40 @@ class FirestoreService {
     @required int newStepsCount,
   }) async {
     try {
+      final DocumentSnapshot documentSnapshot = await _usersCollection
+          .doc(userId)
+          .collection(Constants.stepsCollectionName)
+          .doc(intl.DateFormat("MM-dd-yyyy").format(DateTime.now()))
+          .get();
+
+      if (documentSnapshot.exists) {
+        /// increase today's steps count.
+        await _usersCollection
+            .doc(userId)
+            .collection(Constants.stepsCollectionName)
+            .doc(intl.DateFormat("MM-dd-yyyy").format(DateTime.now()))
+            .update({
+          "stepsCount": newStepsCount,
+        });
+      }
+
+      if (!documentSnapshot.exists) {
+        /// increase today's steps count, but first create the document.
+        await _usersCollection
+            .doc(userId)
+            .collection(Constants.stepsCollectionName)
+            .doc(intl.DateFormat("MM-dd-yyyy").format(DateTime.now()))
+            .set({
+          "id": documentSnapshot.id,
+          "stepsCount": newStepsCount,
+          "createdAt": Timestamp.now(),
+        });
+      }
+
+      /// increase total steps count by 1.
+      /// by difference between old and new step count. (future update)
       await _usersCollection.doc(userId).update({
-        "stepsCount": newStepsCount,
+        "stepsCount": FieldValue.increment(1),
       });
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
