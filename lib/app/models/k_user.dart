@@ -10,6 +10,7 @@ class KUser {
   final String phoneNumber;
   final String photoUrl;
   final int stepsCount;
+  final int healthPoints;
   final Timestamp createdAt;
 
   KUser({
@@ -19,6 +20,7 @@ class KUser {
     @required this.phoneNumber,
     @required this.photoUrl,
     @required this.stepsCount,
+    @required this.healthPoints,
     @required this.createdAt,
   });
 
@@ -29,6 +31,7 @@ class KUser {
     String phoneNumber,
     String photoUrl,
     int stepsCount,
+    int healthPoints,
     Timestamp createdAt,
   }) {
     return KUser(
@@ -38,6 +41,7 @@ class KUser {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       photoUrl: photoUrl ?? this.photoUrl,
       stepsCount: stepsCount ?? this.stepsCount,
+      healthPoints: healthPoints ?? this.healthPoints,
       createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -50,6 +54,7 @@ class KUser {
       'phoneNumber': phoneNumber,
       'photoUrl': photoUrl,
       'stepsCount': stepsCount,
+      'healthPoints': healthPoints,
       'createdAt': createdAt,
     };
   }
@@ -62,6 +67,7 @@ class KUser {
       phoneNumber: map['phoneNumber'],
       photoUrl: map['photoUrl'],
       stepsCount: map['stepsCount'],
+      healthPoints: map['healthPoints'],
       createdAt: map['createdAt'],
     );
   }
@@ -72,7 +78,7 @@ class KUser {
 
   @override
   String toString() {
-    return 'KUser(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, photoUrl: $photoUrl, stepsCount: $stepsCount, createdAt: $createdAt)';
+    return 'KUser(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, photoUrl: $photoUrl, stepsCount: $stepsCount, healthPoints: $healthPoints, createdAt: $createdAt)';
   }
 
   @override
@@ -86,6 +92,7 @@ class KUser {
         other.phoneNumber == phoneNumber &&
         other.photoUrl == photoUrl &&
         other.stepsCount == stepsCount &&
+        other.healthPoints == healthPoints &&
         other.createdAt == createdAt;
   }
 
@@ -97,6 +104,7 @@ class KUser {
         phoneNumber.hashCode ^
         photoUrl.hashCode ^
         stepsCount.hashCode ^
+        healthPoints.hashCode ^
         createdAt.hashCode;
   }
 }

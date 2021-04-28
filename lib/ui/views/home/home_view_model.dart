@@ -57,6 +57,10 @@ class HomeViewModel extends CustomBaseViewModel {
       message: "Congrats! You earned 1 health point 🎉!",
     );
 
+    await _firestoreService.updateHealthPoints(
+      userId: currentFirebaseUser.uid,
+    );
+
     await _firestoreService.addHistoryItem(
       userId: currentFirebaseUser.uid,
       historyItem: KHistoryItem(

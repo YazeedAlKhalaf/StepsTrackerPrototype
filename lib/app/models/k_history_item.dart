@@ -44,7 +44,7 @@ class KHistoryItem {
       'id': id,
       'amount': amount,
       'isIncrease': isIncrease,
-      'rewardAtTimeOfTransaction': rewardAtTimeOfTransaction.toMap(),
+      'rewardAtTimeOfTransaction': rewardAtTimeOfTransaction?.toMap() ?? null,
       'createdAt': createdAt,
     };
   }
@@ -54,9 +54,8 @@ class KHistoryItem {
       id: map['id'],
       amount: map['amount'],
       isIncrease: map['isIncrease'],
-      rewardAtTimeOfTransaction: map['rewardAtTimeOfTransaction'] == null
-          ? null
-          : KReward.fromMap(map['rewardAtTimeOfTransaction']),
+      rewardAtTimeOfTransaction:
+          KReward.fromMap(map['rewardAtTimeOfTransaction']),
       createdAt: map['createdAt'],
     );
   }

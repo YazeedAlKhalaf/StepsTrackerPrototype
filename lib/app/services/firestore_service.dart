@@ -88,10 +88,16 @@ class FirestoreService {
         });
       }
 
+      final KUser currentUserData = KUser.fromMap(
+        (await _usersCollection.doc(userId).get()).data(),
+      );
+
       /// increase total steps count by 1.
       /// by difference between old and new step count. (future update)
       await _usersCollection.doc(userId).update({
-        "stepsCount": FieldValue.increment(1),
+        "stepsCount": FieldValue.increment(
+          newStepsCount - currentUserData.stepsCount,
+        ),
       });
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
@@ -150,6 +156,20 @@ class FirestoreService {
       await documentReference.set(
         historyItem.copyWith(id: documentReference.id).toMap(),
       );
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
+
+  /// [updateHealthPoints] updates health points number and adds to history.
+  Future<dynamic> updateHealthPoints({
+    @required String userId,
+  }) async {
+    try {
+      /// increase health points by one.
+      await _usersCollection.doc(userId).update({
+        "healthPoints": FieldValue.increment(1),
+      });
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
     }

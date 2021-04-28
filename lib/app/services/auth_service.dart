@@ -110,6 +110,7 @@ class AuthService {
       phoneNumber: phoneNumber,
       photoUrl: null,
       stepsCount: 0,
+      healthPoints: 0,
       createdAt: Timestamp.now(),
     );
     await _firestoreService.createUser(

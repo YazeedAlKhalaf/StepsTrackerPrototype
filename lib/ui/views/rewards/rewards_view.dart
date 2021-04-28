@@ -35,7 +35,7 @@ class RewardsView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    "Health Points: ${(model.currentUser.stepsCount / 100).floor()}",
+                    "Health Points: ${model.currentUser.healthPoints}",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -100,8 +100,8 @@ class RewardsView extends StatelessWidget {
                                 builder: (BuildContext context) {
                                   return GestureDetector(
                                     onTap: () async {
-                                      if ((model.currentUser.stepsCount / 100)
-                                              .floor() <
+                                      await model.refreshUserData();
+                                      if (model.currentUser.healthPoints <
                                           reward.price) {
                                         FlashHelper.errorBar(
                                           context,

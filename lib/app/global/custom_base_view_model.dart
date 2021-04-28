@@ -23,5 +23,6 @@ abstract class CustomBaseViewModel extends BaseViewModel {
 
   Future<void> refreshUserData() async {
     await _authService.populateCurrentUser();
+    notifyListeners();
   }
 }
