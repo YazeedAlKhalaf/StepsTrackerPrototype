@@ -18,8 +18,7 @@ class StepsTrackerApp extends StatelessWidget {
         Locale("ar"),
       ],
       fallbackLocale: Locale("en"),
-      // TODO: uncomment this
-      // useFallbackTranslations: true,
+      useFallbackTranslations: true,
       useOnlyLangCode: true,
       assetLoader: CodegenLoader(),
       child: ThemeModeBuilder(
