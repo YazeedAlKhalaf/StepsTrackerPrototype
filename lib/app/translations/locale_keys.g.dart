@@ -72,6 +72,7 @@ abstract class  LocaleKeys {
   static const views_settings_light = 'views.settings.light';
   static const views_settings_dark = 'views.settings.dark';
   static const views_settings_system = 'views.settings.system';
+  static const views_settings_language = 'views.settings.language';
   static const views_settings = 'views.settings';
   static const views_register_check_info_provided_above = 'views.register.check_info_provided_above';
   static const views_register_register = 'views.register.register';

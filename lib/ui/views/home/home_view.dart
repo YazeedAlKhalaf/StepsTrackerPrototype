@@ -172,6 +172,7 @@ class HomeView extends StatelessWidget {
                                             ],
                                           ),
                                         ),
+                                        const SizedBox(width: 10),
                                         Expanded(
                                           flex: 2,
                                           child: Padding(
@@ -317,14 +318,20 @@ class HomeView extends StatelessWidget {
                                                         const SizedBox(
                                                           width: 10,
                                                         ),
-                                                        Text(
-                                                          LocaleKeys
-                                                              .views_home_see_leaderboard
-                                                              .tr(),
-                                                          style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 15,
+                                                        Expanded(
+                                                          child: FittedBox(
+                                                            fit: BoxFit.contain,
+                                                            child: Text(
+                                                              LocaleKeys
+                                                                  .views_home_see_leaderboard
+                                                                  .tr(),
+                                                              style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 15,
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ],

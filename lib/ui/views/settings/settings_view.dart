@@ -67,7 +67,7 @@ class SettingsView extends StatelessWidget {
                     ],
                   ),
                   SettingsSection(
-                    title: "Language",
+                    title: LocaleKeys.views_settings_language.tr(),
                     children: <Widget>[
                       LanguageTile(
                         emoji: "🇬🇧",

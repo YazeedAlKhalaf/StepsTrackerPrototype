@@ -96,7 +96,8 @@ class CodegenLoader extends AssetLoader{
       "appearance": "المظهر",
       "light": "فاتح",
       "dark": "غامق",
-      "system": "النظام"
+      "system": "النظام",
+      "language": "اللغة"
     },
     "register": {
       "check_info_provided_above": "تحقق من المعلومات التي قدمتها أعلاه!",
@@ -204,7 +205,8 @@ static const Map<String,dynamic> en = {
       "appearance": "Appearance",
       "light": "Light",
       "dark": "Dark",
-      "system": "System"
+      "system": "System",
+      "language": "Language"
     },
     "register": {
       "check_info_provided_above": "Check the info you provided above!",
