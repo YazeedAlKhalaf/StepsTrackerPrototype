@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:steps_tracker/app/locator/locator.dart';
+import 'package:steps_tracker/app/router/router.dart';
 import 'package:steps_tracker/app/services/localization_service.dart';
+import 'package:steps_tracker/app/services/router_service.dart';
 import 'package:steps_tracker/ui/views/settings/widgets/language_tile.dart';
 import 'package:theme_mode_builder/theme_mode_builder.dart';
 
@@ -81,6 +83,13 @@ class SettingsView extends StatelessWidget {
                                   context,
                                   SupportedLocales.en,
                                 );
+
+                                await locator<RouterService>()
+                                    .router
+                                    .pushAndPopUntil(
+                                      StartupRoute(),
+                                      predicate: (_) => false,
+                                    );
                               },
                       ),
                       LanguageTile(
@@ -95,6 +104,13 @@ class SettingsView extends StatelessWidget {
                                   context,
                                   SupportedLocales.ar,
                                 );
+
+                                await locator<RouterService>()
+                                    .router
+                                    .pushAndPopUntil(
+                                      StartupRoute(),
+                                      predicate: (_) => false,
+                                    );
                               },
                       ),
                     ],
