@@ -33,7 +33,7 @@ class HomeViewModel extends CustomBaseViewModel {
     _fitnessService.init();
 
     stepsCountLocal.stream.listen((int newStepsCount) async {
-      if (newStepsCount % 100 == 0) {
+      if (newStepsCount % 100 == 0 && newStepsCount > 1) {
         await showUserEarnedHealthPoints();
         return;
       }
