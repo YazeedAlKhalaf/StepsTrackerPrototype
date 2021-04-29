@@ -156,7 +156,7 @@ class LoginViewModel extends CustomBaseViewModel {
       } else {
         /// go to home view
         await goBack();
-        await _routerService.router.pushAndRemoveUntil(
+        await _routerService.router.pushAndPopUntil(
           MainRoute(),
           predicate: (_) => false,
         );
@@ -165,7 +165,7 @@ class LoginViewModel extends CustomBaseViewModel {
   }
 
   Future<void> navigateToRegisterView() async {
-    await _routerService.router.pushAndRemoveUntil(
+    await _routerService.router.pushAndPopUntil(
       RegisterRoute(),
       predicate: (_) => false,
     );

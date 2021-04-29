@@ -12,7 +12,7 @@ class AccountViewModel extends CustomBaseViewModel {
     setBusy(true);
     await _authService.signOut();
 
-    await _routerService.router.pushAndRemoveUntil(
+    await _routerService.router.pushAndPopUntil(
       RegisterRoute(),
       predicate: (_) => false,
     );

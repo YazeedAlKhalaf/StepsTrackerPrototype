@@ -13,7 +13,7 @@ class StartupViewModel extends CustomBaseViewModel {
     if (_authService.isUserLoggedIn()) {
       await _authService.populateCurrentUser();
       await Future.delayed(Duration(seconds: 1));
-      await _routerService.router.pushAndRemoveUntil(
+      await _routerService.router.pushAndPopUntil(
         MainRoute(),
         predicate: (_) => false,
       );
@@ -22,7 +22,7 @@ class StartupViewModel extends CustomBaseViewModel {
 
     /// go to register view, since user is not logged in.
     await Future.delayed(Duration(seconds: 1));
-    await _routerService.router.pushAndRemoveUntil(
+    await _routerService.router.pushAndPopUntil(
       RegisterRoute(),
       predicate: (_) => false,
     );

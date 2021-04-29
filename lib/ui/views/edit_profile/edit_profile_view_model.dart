@@ -111,7 +111,7 @@ class EditProfileViewModel extends CustomBaseViewModel {
       setProgressText("");
       await refreshUserData();
 
-      await _routerService.router.pushAndRemoveUntil(
+      await _routerService.router.pushAndPopUntil(
         StartupRoute(),
         predicate: (_) => false,
       );
