@@ -30,7 +30,7 @@ class HistoryView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              "History",
+              LocaleKeys.views_history_history.tr(),
             ),
           ),
           body: SafeArea(
@@ -45,7 +45,7 @@ class HistoryView extends StatelessWidget {
                     child: model.historyItems.isEmpty
                         ? Center(
                             child: Text(
-                              "Oops! Seems you have no history! 😢",
+                              LocaleKeys.views_history_no_history.tr(),
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
