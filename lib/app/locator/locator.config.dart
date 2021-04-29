@@ -12,8 +12,9 @@ import '../services/firebase_service.dart' as _i4;
 import '../services/firestorage_service.dart' as _i5;
 import '../services/firestore_service.dart' as _i6;
 import '../services/fitness_service.dart' as _i7;
+import '../services/localization_service.dart' as _i8;
 import '../services/router_service.dart'
-    as _i8; // ignore_for_file: unnecessary_lambdas
+    as _i9; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -25,6 +26,7 @@ _i1.GetIt $initLocator(_i1.GetIt get,
   gh.lazySingleton<_i5.FirestorageService>(() => _i5.FirestorageService());
   gh.lazySingleton<_i6.FirestoreService>(() => _i6.FirestoreService());
   gh.lazySingleton<_i7.FitnessService>(() => _i7.FitnessService());
-  gh.lazySingleton<_i8.RouterService>(() => _i8.RouterService());
+  gh.lazySingleton<_i8.LocalizationService>(() => _i8.LocalizationService());
+  gh.lazySingleton<_i9.RouterService>(() => _i9.RouterService());
   return get;
 }

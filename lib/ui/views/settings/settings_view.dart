@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
+import 'package:steps_tracker/app/locator/locator.dart';
+import 'package:steps_tracker/app/services/localization_service.dart';
+import 'package:steps_tracker/ui/views/settings/widgets/language_tile.dart';
 import 'package:theme_mode_builder/theme_mode_builder.dart';
 
 import 'package:steps_tracker/app/translations/locale_keys.g.dart';
@@ -60,6 +63,39 @@ class SettingsView extends StatelessWidget {
                         onTap: () async {
                           ThemeModeBuilderConfig.setSystem();
                         },
+                      ),
+                    ],
+                  ),
+                  SettingsSection(
+                    title: "Language",
+                    children: <Widget>[
+                      LanguageTile(
+                        emoji: "🇬🇧",
+                        title: "English",
+                        showCheck: context.locale == const Locale("en"),
+                        onTap: context.locale == const Locale("en")
+                            ? () {}
+                            : () async {
+                                await locator<LocalizationService>()
+                                    .changeLocale(
+                                  context,
+                                  SupportedLocales.en,
+                                );
+                              },
+                      ),
+                      LanguageTile(
+                        emoji: "🇸🇦",
+                        title: "العربية",
+                        showCheck: context.locale == const Locale("ar"),
+                        onTap: context.locale == const Locale("ar")
+                            ? () {}
+                            : () async {
+                                await locator<LocalizationService>()
+                                    .changeLocale(
+                                  context,
+                                  SupportedLocales.ar,
+                                );
+                              },
                       ),
                     ],
                   ),

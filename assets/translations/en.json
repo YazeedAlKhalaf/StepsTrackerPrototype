@@ -80,7 +80,8 @@
       "appearance": "Appearance",
       "light": "Light",
       "dark": "Dark",
-      "system": "System"
+      "system": "System",
+      "language": "Language"
     },
     "register": {
       "check_info_provided_above": "Check the info you provided above!",

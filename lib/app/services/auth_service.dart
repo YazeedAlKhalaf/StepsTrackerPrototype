@@ -8,6 +8,7 @@ import 'package:steps_tracker/app/models/k_user.dart';
 import 'package:steps_tracker/app/router/router.dart';
 import 'package:steps_tracker/app/services/error_service.dart';
 import 'package:steps_tracker/app/services/firestore_service.dart';
+import 'package:steps_tracker/app/services/localization_service.dart';
 import 'package:steps_tracker/app/services/router_service.dart';
 
 @lazySingleton
@@ -111,6 +112,7 @@ class AuthService {
       photoUrl: null,
       stepsCount: 0,
       healthPoints: 0,
+      language: SupportedLocales.en,
       createdAt: Timestamp.now(),
     );
     await _firestoreService.createUser(

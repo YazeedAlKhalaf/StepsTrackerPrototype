@@ -9,6 +9,7 @@ import 'package:steps_tracker/app/models/k_history_item.dart';
 import 'package:steps_tracker/app/models/k_reward.dart';
 import 'package:steps_tracker/app/models/k_user.dart';
 import 'package:steps_tracker/app/services/error_service.dart';
+import 'package:steps_tracker/app/services/localization_service.dart';
 import 'package:steps_tracker/app/utils/constants.dart';
 
 @lazySingleton
@@ -244,6 +245,22 @@ class FirestoreService {
         "lastName": lastName,
         "photoUrl": photoUrl,
       });
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
+
+  /// [updateUserLanguage] updates the user language in the database.
+  Future<void> updateUserLanguage({
+    @required String userId,
+    @required SupportedLocales newLanguage,
+  }) async {
+    try {
+      await _usersCollection.doc(userId).update(
+        <String, dynamic>{
+          "language": convertLanguageEnumToString(newLanguage),
+        },
+      );
     } catch (exception) {
       return ErrorService.handleFirestoreExceptions(exception);
     }

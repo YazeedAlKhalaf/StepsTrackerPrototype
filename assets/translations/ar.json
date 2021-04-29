@@ -80,7 +80,8 @@
       "appearance": "المظهر",
       "light": "فاتح",
       "dark": "غامق",
-      "system": "النظام"
+      "system": "النظام",
+      "language": "اللغة"
     },
     "register": {
       "check_info_provided_above": "تحقق من المعلومات التي قدمتها أعلاه!",

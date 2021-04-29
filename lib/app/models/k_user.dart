@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 
+import 'package:steps_tracker/app/services/localization_service.dart';
+
 class KUser {
   final String id;
   final String firstName;
@@ -11,9 +13,10 @@ class KUser {
   final String photoUrl;
   final int stepsCount;
   final int healthPoints;
+  final SupportedLocales language;
   final Timestamp createdAt;
 
-  KUser({
+  const KUser({
     @required this.id,
     @required this.firstName,
     @required this.lastName,
@@ -21,6 +24,7 @@ class KUser {
     @required this.photoUrl,
     @required this.stepsCount,
     @required this.healthPoints,
+    @required this.language,
     @required this.createdAt,
   });
 
@@ -32,6 +36,7 @@ class KUser {
     String photoUrl,
     int stepsCount,
     int healthPoints,
+    SupportedLocales language,
     Timestamp createdAt,
   }) {
     return KUser(
@@ -42,6 +47,7 @@ class KUser {
       photoUrl: photoUrl ?? this.photoUrl,
       stepsCount: stepsCount ?? this.stepsCount,
       healthPoints: healthPoints ?? this.healthPoints,
+      language: language ?? this.language,
       createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -55,6 +61,7 @@ class KUser {
       'photoUrl': photoUrl,
       'stepsCount': stepsCount,
       'healthPoints': healthPoints,
+      'language': convertLanguageEnumToString(language),
       'createdAt': createdAt,
     };
   }
@@ -68,6 +75,7 @@ class KUser {
       photoUrl: map['photoUrl'],
       stepsCount: map['stepsCount'],
       healthPoints: map['healthPoints'],
+      language: convertStringToLanguageEnum(map["language"] as String),
       createdAt: map['createdAt'],
     );
   }
@@ -78,7 +86,7 @@ class KUser {
 
   @override
   String toString() {
-    return 'KUser(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, photoUrl: $photoUrl, stepsCount: $stepsCount, healthPoints: $healthPoints, createdAt: $createdAt)';
+    return 'KUser(id: $id, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, photoUrl: $photoUrl, stepsCount: $stepsCount, healthPoints: $healthPoints, language: $language, createdAt: $createdAt)';
   }
 
   @override
@@ -93,6 +101,7 @@ class KUser {
         other.photoUrl == photoUrl &&
         other.stepsCount == stepsCount &&
         other.healthPoints == healthPoints &&
+        other.language == language &&
         other.createdAt == createdAt;
   }
 
@@ -105,6 +114,7 @@ class KUser {
         photoUrl.hashCode ^
         stepsCount.hashCode ^
         healthPoints.hashCode ^
+        language.hashCode ^
         createdAt.hashCode;
   }
 }
