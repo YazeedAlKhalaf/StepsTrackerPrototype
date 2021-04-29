@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Utils {
   static String formatPhoneNumber({
@@ -24,5 +27,13 @@ class Utils {
     print("Phone number before formatting: $phoneNumber");
     print("Phone number after formatting: $phoneNumberFormatted");
     return phoneNumberFormatted;
+  }
+
+  static Future<File> pickImage() async {
+    final PickedFile pickedFile = await ImagePicker().getImage(
+      source: ImageSource.gallery,
+    );
+
+    return File(pickedFile.path);
   }
 }

@@ -230,4 +230,22 @@ class FirestoreService {
       return ErrorService.handleFirestoreExceptions(exception);
     }
   }
+
+  /// [updateUser] updates user data.
+  Future<dynamic> updateUser({
+    @required String userId,
+    @required String firstName,
+    @required String lastName,
+    @required String photoUrl,
+  }) async {
+    try {
+      await _usersCollection.doc(userId).update({
+        "firstName": firstName,
+        "lastName": lastName,
+        "photoUrl": photoUrl,
+      });
+    } catch (exception) {
+      return ErrorService.handleFirestoreExceptions(exception);
+    }
+  }
 }

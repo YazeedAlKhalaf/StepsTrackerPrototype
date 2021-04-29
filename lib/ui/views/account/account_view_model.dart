@@ -26,4 +26,8 @@ class AccountViewModel extends CustomBaseViewModel {
   Future<void> navigateToSettingsView() async {
     await _routerService.router.push(SettingsRoute());
   }
+
+  Future<void> navigateToEditProfileView() async {
+    await _routerService.router.push(EditProfileRoute());
+  }
 }

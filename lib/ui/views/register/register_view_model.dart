@@ -20,7 +20,6 @@ class RegisterViewModel extends CustomBaseViewModel {
 
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController sNumberController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
 
   final TextEditingController verificationCodeController =
@@ -61,7 +60,6 @@ class RegisterViewModel extends CustomBaseViewModel {
       setBusy(true);
       final String firstNameTrimmed = firstNameController.text.trim();
       final String lastNameTrimmed = lastNameController.text.trim();
-      final String sNumberTrimmed = sNumberController.text.trim();
       final String phoneNumberTrimmed = Utils.formatPhoneNumber(
         phoneNumber: phoneNumberController.text.trim(),
       );
@@ -72,7 +70,6 @@ class RegisterViewModel extends CustomBaseViewModel {
         phoneNumber: phoneNumberTrimmed,
         firstName: firstNameTrimmed,
         lastName: lastNameTrimmed,
-        sNumber: sNumberTrimmed,
       );
 
       /// if error then show error bar
@@ -99,7 +96,6 @@ class RegisterViewModel extends CustomBaseViewModel {
                 phoneNumber: phoneNumberTrimmed,
                 firstName: firstNameTrimmed,
                 lastName: lastNameTrimmed,
-                sNumber: sNumberTrimmed,
               );
             },
           );
@@ -120,7 +116,6 @@ class RegisterViewModel extends CustomBaseViewModel {
     @required String phoneNumber,
     @required String firstName,
     @required String lastName,
-    @required String sNumber,
   }) async {
     /// get verification id
     final dynamic response = await _authService.sendVerificationCode(
@@ -153,7 +148,6 @@ class RegisterViewModel extends CustomBaseViewModel {
     @required String phoneNumber,
     @required String firstName,
     @required String lastName,
-    @required String sNumber,
   }) async {
     removeFocus();
     final String verificationCodeString =

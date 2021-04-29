@@ -5,6 +5,8 @@
 - [x] Login and Register with phone number
   - [x] name
   - [x] phone number
+  - [x] profile image
+- [x] Edit profile
 - [x] Show steps count
   - [x] from server
 - [x] Get steps from device

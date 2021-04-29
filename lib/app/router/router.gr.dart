@@ -5,8 +5,10 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/material.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 import 'package:steps_tracker/ui/views/account/account_view.dart' as _i8;
+import 'package:steps_tracker/ui/views/edit_profile/edit_profile_view.dart'
+    as _i12;
 import 'package:steps_tracker/ui/views/history/history_view.dart' as _i10;
 import 'package:steps_tracker/ui/views/home/home_view.dart' as _i3;
 import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart'
@@ -58,6 +60,9 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
     },
     SettingsRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i11.SettingsView());
+    },
+    EditProfileRoute.name: (entry) {
+      return _i1.AdaptivePage(entry: entry, child: _i12.EditProfileView());
     }
   };
 
@@ -72,7 +77,8 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(AccountRoute.name, path: '/account-view'),
         _i1.RouteConfig(RewardsRoute.name, path: '/rewards-view'),
         _i1.RouteConfig(HistoryRoute.name, path: '/history-view'),
-        _i1.RouteConfig(SettingsRoute.name, path: '/settings-view')
+        _i1.RouteConfig(SettingsRoute.name, path: '/settings-view'),
+        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-view')
       ];
 }
 
@@ -83,7 +89,7 @@ class StartupRoute extends _i1.PageRouteInfo {
 }
 
 class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({_i12.Key key, void Function() onSeeLeaderboardPressed})
+  HomeRoute({_i13.Key key, void Function() onSeeLeaderboardPressed})
       : super(name,
             path: '/home-view',
             args: HomeRouteArgs(
@@ -95,7 +101,7 @@ class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
 class HomeRouteArgs {
   const HomeRouteArgs({this.key, this.onSeeLeaderboardPressed});
 
-  final _i12.Key key;
+  final _i13.Key key;
 
   final void Function() onSeeLeaderboardPressed;
 }
@@ -146,4 +152,10 @@ class SettingsRoute extends _i1.PageRouteInfo {
   const SettingsRoute() : super(name, path: '/settings-view');
 
   static const String name = 'SettingsRoute';
+}
+
+class EditProfileRoute extends _i1.PageRouteInfo {
+  const EditProfileRoute() : super(name, path: '/edit-profile-view');
+
+  static const String name = 'EditProfileRoute';
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:steps_tracker/ui/views/account/account_view.dart';
+import 'package:steps_tracker/ui/views/edit_profile/edit_profile_view.dart';
 import 'package:steps_tracker/ui/views/history/history_view.dart';
 import 'package:steps_tracker/ui/views/home/home_view.dart';
 import 'package:steps_tracker/ui/views/leaderboard/leaderboard_view.dart';
@@ -25,6 +26,7 @@ export './router.gr.dart';
     AutoRoute(page: RewardsView),
     AutoRoute(page: HistoryView),
     AutoRoute(page: SettingsView),
+    AutoRoute(page: EditProfileView),
   ],
 )
 class $StepsTrackerRouter {}
