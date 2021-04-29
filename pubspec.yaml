@@ -26,6 +26,7 @@ dependencies:
   font_awesome_flutter: ^9.0.0
   theme_mode_builder: ^1.0.0
   image_picker: ^0.7.4
+  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:

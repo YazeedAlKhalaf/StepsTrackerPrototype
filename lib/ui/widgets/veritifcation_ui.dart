@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:steps_tracker/app/global/validators.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 
 class VerificationUI extends StatelessWidget {
@@ -22,7 +25,7 @@ class VerificationUI extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 35),
           Text(
-            "Verify Phone Number",
+            LocaleKeys.widgets_verification_ui_verify_phone_number.tr(),
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -30,7 +33,7 @@ class VerificationUI extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            "Please be patient while the Verification Code is sent via SMS",
+            LocaleKeys.widgets_verification_ui_be_patient_sms_code_sent.tr(),
             style: TextStyle(
               fontSize: 12,
               color: Theme.of(context).textTheme.caption.color,
@@ -45,7 +48,8 @@ class VerificationUI extends StatelessWidget {
               FilteringTextInputFormatter.digitsOnly,
             ],
             decoration: InputDecoration(
-              labelText: "Verification",
+              labelText:
+                  LocaleKeys.widgets_verification_ui_verification_code.tr(),
               errorMaxLines: 2,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -67,7 +71,7 @@ class VerificationUI extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Text(
-                "Verify",
+                LocaleKeys.widgets_verification_ui_verify.tr(),
                 style: TextStyle(
                   fontSize: 18,
                 ),

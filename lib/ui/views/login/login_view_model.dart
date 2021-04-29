@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:steps_tracker/app/models/k_error.dart';
 import 'package:steps_tracker/app/router/router.dart';
 import 'package:steps_tracker/app/services/auth_service.dart';
 import 'package:steps_tracker/app/services/router_service.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 import 'package:steps_tracker/app/utils/utils.dart';
 import 'package:steps_tracker/ui/widgets/veritifcation_ui.dart';
@@ -99,7 +101,7 @@ class LoginViewModel extends CustomBaseViewModel {
       setAutoValidate(true);
       FlashHelper.errorBar(
         context,
-        message: "Check the info you provided above!",
+        message: LocaleKeys.views_login_check_info_provided_above.tr(),
       );
     }
   }

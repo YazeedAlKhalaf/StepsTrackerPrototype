@@ -1,9 +1,12 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:steps_tracker/app/models/k_reward.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 import 'package:steps_tracker/ui/views/rewards/rewards_view_model.dart';
@@ -26,7 +29,7 @@ class RewardsView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              "Rewards",
+              LocaleKeys.views_rewards_rewards.tr(),
             ),
           ),
           body: SafeArea(
@@ -35,7 +38,7 @@ class RewardsView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    "Health Points: ${model.currentUser.healthPoints}",
+                    "${LocaleKeys.views_rewards_health_points.tr()}: ${model.currentUser.healthPoints}",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -78,7 +81,7 @@ class RewardsView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "${reward.price} health points",
+                                  "${reward.price} ${LocaleKeys.views_rewards_health_points.tr()}",
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500,
@@ -105,16 +108,25 @@ class RewardsView extends StatelessWidget {
                                           reward.price) {
                                         FlashHelper.errorBar(
                                           context,
-                                          message:
-                                              "You don't have enough health points!",
+                                          message: LocaleKeys
+                                              .views_rewards_not_enough_health_points
+                                              .tr(),
                                         );
                                         return;
                                       }
                                       await FlashHelper.simpleDialog(
                                         context,
-                                        title: "Are you sure?",
-                                        message:
-                                            "Are you sure you want to spend ${reward.price} health points on ${reward.name}?",
+                                        title: LocaleKeys
+                                            .views_rewards_are_you_sure
+                                            .tr(),
+                                        message: LocaleKeys
+                                            .views_rewards_are_you_sure_spend
+                                            .tr(
+                                          namedArgs: {
+                                            "rewardPrice": "${reward.price}",
+                                            "rewardName": "${reward.name}",
+                                          },
+                                        ),
                                         negativeAction: (
                                           BuildContext context,
                                           FlashController controller,
@@ -126,7 +138,8 @@ class RewardsView extends StatelessWidget {
                                               primary: Colors.red,
                                             ),
                                             child: Text(
-                                              'Cancel',
+                                              LocaleKeys.views_rewards_cancel
+                                                  .tr(),
                                               style: TextStyle(
                                                 color: Colors.red,
                                               ),
@@ -144,7 +157,8 @@ class RewardsView extends StatelessWidget {
                                         ) {
                                           return TextButton(
                                             child: Text(
-                                              'Yes, Sure!',
+                                              LocaleKeys.views_rewards_yes_sure
+                                                  .tr(),
                                             ),
                                             onPressed: () async {
                                               await model.refreshUserData();
@@ -154,8 +168,9 @@ class RewardsView extends StatelessWidget {
                                                   reward.price) {
                                                 FlashHelper.errorBar(
                                                   context,
-                                                  message:
-                                                      "You don't have enough health points!",
+                                                  message: LocaleKeys
+                                                      .views_rewards_not_enough_health_points
+                                                      .tr(),
                                                 );
                                                 return;
                                               }
@@ -171,9 +186,17 @@ class RewardsView extends StatelessWidget {
 
                                               FlashHelper.simpleDialog(
                                                 context,
-                                                title: "Congrats 🎉",
-                                                message:
-                                                    "Congrats! Here is your coupon code: ${reward.couponCode}.",
+                                                title: LocaleKeys
+                                                    .views_rewards_congrats
+                                                    .tr(),
+                                                message: LocaleKeys
+                                                    .views_rewards_congrats_coupon_code
+                                                    .tr(
+                                                  namedArgs: {
+                                                    "rewardCouponCode":
+                                                        "${reward.couponCode}",
+                                                  },
+                                                ),
                                                 negativeAction: (
                                                   BuildContext context,
                                                   FlashController controller,
@@ -182,7 +205,9 @@ class RewardsView extends StatelessWidget {
                                                 ) {
                                                   return TextButton(
                                                     child: Text(
-                                                      'Ok!',
+                                                      LocaleKeys
+                                                          .views_rewards_yes_sure
+                                                          .tr(),
                                                     ),
                                                     onPressed: () {
                                                       controller.dismiss();
@@ -213,9 +238,16 @@ class RewardsView extends StatelessWidget {
                                             model.currentUser.id) {
                                       FlashHelper.simpleDialog(
                                         context,
-                                        title: "Congrats 🎉",
-                                        message:
-                                            "Congrats! Here is your coupon code: ${reward.couponCode}.",
+                                        title: LocaleKeys.views_rewards_congrats
+                                            .tr(),
+                                        message: LocaleKeys
+                                            .views_rewards_congrats_coupon_code
+                                            .tr(
+                                          namedArgs: {
+                                            "rewardCouponCode":
+                                                "${reward.couponCode}",
+                                          },
+                                        ),
                                         negativeAction: (
                                           BuildContext context,
                                           FlashController controller,
@@ -224,7 +256,8 @@ class RewardsView extends StatelessWidget {
                                         ) {
                                           return TextButton(
                                             child: Text(
-                                              'Ok!',
+                                              LocaleKeys.views_rewards_yes_sure
+                                                  .tr(),
                                             ),
                                             onPressed: () {
                                               controller.dismiss();
@@ -251,7 +284,7 @@ class RewardsView extends StatelessWidget {
                                 Transform.rotate(
                                   angle: -pi / 8,
                                   child: Text(
-                                    "Sold Out",
+                                    LocaleKeys.views_rewards_sold_out.tr(),
                                     style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
@@ -270,7 +303,8 @@ class RewardsView extends StatelessWidget {
                                 Positioned(
                                   bottom: 32.5,
                                   child: Text(
-                                    "View Coupon Code",
+                                    LocaleKeys.views_rewards_view_coupon_code
+                                        .tr(),
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,

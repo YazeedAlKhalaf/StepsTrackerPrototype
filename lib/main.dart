@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:steps_tracker/app/locator/locator.dart';
@@ -12,6 +13,9 @@ Future<void> main() async {
 
   /// initialize hive box of the theme mode
   await ThemeModeBuilderConfig.ensureInitialized();
+
+  /// initialize easy localization
+  await EasyLocalization.ensureInitialized();
 
   /// initialize locator (dependency injector)
   configureDependencies();

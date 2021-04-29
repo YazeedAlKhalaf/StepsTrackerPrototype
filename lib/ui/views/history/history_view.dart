@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -5,6 +6,7 @@ import 'package:intl/intl.dart' as intl;
 import 'package:stacked/stacked.dart';
 
 import 'package:steps_tracker/app/models/k_history_item.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 
@@ -73,8 +75,28 @@ class HistoryView extends StatelessWidget {
                                           ),
                                 title: Text(
                                   historyItem.rewardAtTimeOfTransaction == null
-                                      ? "${historyItem.isIncrease ? "+" : "-"}${historyItem.amount} health points"
-                                      : "${historyItem.isIncrease ? "+" : "-"}${historyItem.amount} health points for ${historyItem.rewardAtTimeOfTransaction.name} from ${historyItem.rewardAtTimeOfTransaction.vendor}",
+                                      ? LocaleKeys
+                                          .views_history_reward_null_title
+                                          .tr(
+                                          namedArgs: {
+                                            "sign":
+                                                "${historyItem.isIncrease ? "+" : "-"}",
+                                            "amount": "${historyItem.amount}",
+                                          },
+                                        )
+                                      : LocaleKeys
+                                          .views_history_reward_nonull_title
+                                          .tr(
+                                          namedArgs: {
+                                            "sign":
+                                                "${historyItem.isIncrease ? "+" : "-"}",
+                                            "amount": "${historyItem.amount}",
+                                            "rewardName":
+                                                "${historyItem.rewardAtTimeOfTransaction.name}",
+                                            "rewardVendor":
+                                                "${historyItem.rewardAtTimeOfTransaction.vendor}",
+                                          },
+                                        ),
                                   style: TextStyle(
                                     color: historyItem.isIncrease
                                         ? Colors.green
@@ -93,9 +115,16 @@ class HistoryView extends StatelessWidget {
 
                                   FlashHelper.simpleDialog(
                                     context,
-                                    title: "Coupon Code",
-                                    message:
-                                        "Your coupon code is: ${historyItem.rewardAtTimeOfTransaction.couponCode}",
+                                    title: LocaleKeys.views_history_coupon_code
+                                        .tr(),
+                                    message: LocaleKeys
+                                        .views_history_your_coupon_code_is
+                                        .tr(
+                                      namedArgs: {
+                                        "couponCode":
+                                            "${historyItem.rewardAtTimeOfTransaction.couponCode}",
+                                      },
+                                    ),
                                     negativeAction: (
                                       BuildContext context,
                                       FlashController controller,
@@ -106,7 +135,7 @@ class HistoryView extends StatelessWidget {
                                           primary: KColors.orange,
                                         ),
                                         child: Text(
-                                          'Ok',
+                                          LocaleKeys.views_history_ok.tr(),
                                           style: TextStyle(
                                             color: KColors.orange,
                                           ),

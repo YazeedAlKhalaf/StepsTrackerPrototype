@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:steps_tracker/app/global/validators.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 
 import './login_view_model.dart';
@@ -28,7 +31,7 @@ class LoginView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Login",
+                        LocaleKeys.views_login_login.tr(),
                         style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
@@ -53,7 +56,8 @@ class LoginView extends StatelessWidget {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              labelText: "Phone Number",
+                              labelText:
+                                  LocaleKeys.views_login_phone_number.tr(),
                             ),
                             validator: (String phoneNumber) {
                               return validatePhoneNumber(phoneNumber);
@@ -82,7 +86,7 @@ class LoginView extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(15),
                                     child: Text(
-                                      "Login",
+                                      LocaleKeys.views_login_login.tr(),
                                       style: TextStyle(
                                         fontSize: 18,
                                       ),
@@ -105,7 +109,7 @@ class LoginView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Text(
-                        "Have no account? Register!",
+                        LocaleKeys.views_login_have_no_account.tr(),
                         style: TextStyle(
                           color: KColors.blue,
                           fontWeight: FontWeight.bold,

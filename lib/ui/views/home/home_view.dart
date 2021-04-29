@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 import 'package:steps_tracker/ui/widgets/custom_ring.dart';
 
@@ -65,7 +68,12 @@ class HomeView extends StatelessWidget {
                           child: Row(
                             children: <Widget>[
                               Text(
-                                "Hello ${model.currentUser?.firstName ?? ""},",
+                                LocaleKeys.views_home_hello.tr(
+                                  namedArgs: {
+                                    "name":
+                                        "${model.currentUser?.firstName ?? ""}",
+                                  },
+                                ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 22,
@@ -85,8 +93,8 @@ class HomeView extends StatelessWidget {
                             if (snapshot.hasError) {
                               return Text(
                                 snapshot.error is PlatformException
-                                    ? "Your device doesn't\nsupport steps tracking! 😢"
-                                    : "Something went wrong!",
+                                    ? LocaleKeys.views_home_not_supported.tr()
+                                    : LocaleKeys.views_home_unknown_error.tr(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -201,7 +209,9 @@ class HomeView extends StatelessWidget {
                                                           ),
                                                         ),
                                                         Text(
-                                                          "to reach your goal!",
+                                                          LocaleKeys
+                                                              .views_home_to_reach_your_goal
+                                                              .tr(),
                                                           style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -225,7 +235,7 @@ class HomeView extends StatelessWidget {
                                                         Row(
                                                           children: <Widget>[
                                                             Text(
-                                                              "total steps: ",
+                                                              "${LocaleKeys.views_home_total_steps.tr()}: ",
                                                               style: TextStyle(
                                                                 fontSize: 12,
                                                               ),
@@ -250,7 +260,7 @@ class HomeView extends StatelessWidget {
                                                         Row(
                                                           children: <Widget>[
                                                             Text(
-                                                              "total distance: ",
+                                                              "${LocaleKeys.views_home_total_distance.tr()}: ",
                                                               style: TextStyle(
                                                                 fontSize: 12,
                                                               ),
@@ -271,7 +281,7 @@ class HomeView extends StatelessWidget {
                                                                       .center,
                                                             ),
                                                             Text(
-                                                              " KM",
+                                                              " ${LocaleKeys.views_home_km_kilotmeter.tr()}",
                                                               style: TextStyle(
                                                                 fontSize: 12,
                                                               ),
@@ -308,7 +318,9 @@ class HomeView extends StatelessWidget {
                                                           width: 10,
                                                         ),
                                                         Text(
-                                                          "See leaderboard",
+                                                          LocaleKeys
+                                                              .views_home_see_leaderboard
+                                                              .tr(),
                                                           style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,

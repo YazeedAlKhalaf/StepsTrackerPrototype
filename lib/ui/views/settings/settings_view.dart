@@ -1,9 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
+import 'package:theme_mode_builder/theme_mode_builder.dart';
+
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/ui/views/settings/settings_view_model.dart';
 import 'package:steps_tracker/ui/views/settings/widgets/settings_section.dart';
-import 'package:theme_mode_builder/theme_mode_builder.dart';
 
 class SettingsView extends StatelessWidget {
   @override
@@ -18,7 +21,7 @@ class SettingsView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              "Settings",
+              LocaleKeys.views_settings_settings.tr(),
             ),
           ),
           body: SafeArea(
@@ -26,14 +29,14 @@ class SettingsView extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SettingsSection(
-                    title: "Appearance",
+                    title: LocaleKeys.views_settings_appearance.tr(),
                     children: <Widget>[
                       ListTile(
                         leading: Icon(
                           FontAwesomeIcons.sun,
                           size: 30,
                         ),
-                        title: Text("Light"),
+                        title: Text(LocaleKeys.views_settings_light.tr()),
                         onTap: () async {
                           ThemeModeBuilderConfig.setLight();
                         },
@@ -43,7 +46,7 @@ class SettingsView extends StatelessWidget {
                           FontAwesomeIcons.moon,
                           size: 30,
                         ),
-                        title: Text("Dark"),
+                        title: Text(LocaleKeys.views_settings_dark.tr()),
                         onTap: () async {
                           ThemeModeBuilderConfig.setDark();
                         },
@@ -53,7 +56,7 @@ class SettingsView extends StatelessWidget {
                           FontAwesomeIcons.mobileAlt,
                           size: 30,
                         ),
-                        title: Text("System"),
+                        title: Text(LocaleKeys.views_settings_system.tr()),
                         onTap: () async {
                           ThemeModeBuilderConfig.setSystem();
                         },

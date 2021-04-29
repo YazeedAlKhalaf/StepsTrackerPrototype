@@ -1,0 +1,108 @@
+{
+  "validators": {
+    "first": "First Name",
+    "last": "Last Name",
+    "less_characters": "{field} must be less than {characters} characters.",
+    "more_characters": "{field} must be more than {characters} characters.",
+    "cant_empty": "{field} can't be empty.",
+    "must_be": "{field} must be {characters} characters.",
+    "not_correct": "{field} is not correct.",
+    "phone_number": "Phone Number",
+    "verification_code": "Verification Code"
+  },
+  "error_service": {
+    "unknown": "Something went wrong! Please try again later.",
+    "invalid_verification_id": "Invalid verification ID.",
+    "invalid_verification_code": "Invalid verification code.",
+    "user_disabled": "Your account is disabled."
+  },
+  "views": {
+    "account": {
+      "welcome": "Welcome {name},",
+      "sign_out": "Sign Out",
+      "edit_profile": "Edit Profile",
+      "transaction_history": "Transaction History",
+      "settings": "Settings"
+    },
+    "edit_profile": {
+      "edit_profile": "Edit Profile",
+      "change_profile_image": "Change profile image",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "update_profile": "Update Profile"
+    },
+    "history": {
+      "history": "History",
+      "no_history": "Oops! Seems you have no history! 😢",
+      "reward_null_title": "{sign}{amount} health points",
+      "reward_nonull_title": "{sign}{amount} health points for {rewardName} from {rewardVendor}",
+      "coupon_code": "Coupon Code",
+      "your_coupon_code_is": "Your coupon code is: {couponCode}",
+      "ok": "Ok"
+    },
+    "home": {
+      "hello": "Hello {name},",
+      "not_supported": "Your device doesn't\nsupport steps tracking! 😢",
+      "unknown_error": "Something went wrong!",
+      "to_reach_your_goal": "to reach your goal!",
+      "total_steps": "total steps",
+      "total_distance": "total distance",
+      "km_kilotmeter": "KM",
+      "see_leaderboard": "See leaderboard"
+    },
+    "leaderboard": {
+      "leaderboard": "Leaderboard",
+      "unknown_error": "Something went wrong!",
+      "top_50": "Top 50",
+      "you": "You"
+    },
+    "main": {
+      "home": "Home",
+      "leaderboard": "Leaderboard",
+      "rewards": "Rewards",
+      "account": "Account"
+    },
+    "rewards": {
+      "rewards": "Rewards",
+      "health_points": "Health Points",
+      "not_enough_health_points": "You don't have enough health points!",
+      "are_you_sure": "Are you sure?",
+      "are_you_sure_spend": "Are you sure you want to spend {rewardPrice} health points on {rewardName}?",
+      "cancel": "Cancel",
+      "yes_sure": "Yes, Sure!",
+      "congrats": "Congrats 🎉",
+      "congrats_coupon_code": "Congrats! Here is your coupon code: {rewardCouponCode}.",
+      "sold_out": "Sold Out",
+      "view_coupon_code": "View Coupon Code"
+    },
+    "settings": {
+      "settings": "Settings",
+      "appearance": "Appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "register": {
+      "check_info_provided_above": "Check the info you provided above!",
+      "register": "Register",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "phone_number": "Phone Number",
+      "already_have_account": "Already have an account? Login!"
+    },
+    "login": {
+      "check_info_provided_above": "Check the info you provided above!",
+      "login": "Login",
+      "phone_number": "Phone Number",
+      "have_no_account": "Have no account? Register!"
+    }
+  },
+  "widgets": {
+    "verification_ui": {
+      "verify_phone_number": "Verify Phone Number",
+      "be_patient_sms_code_sent": "Kindly be patient while the Verification Code is sent via SMS.",
+      "verification_code": "Verification Code",
+      "verify": "Verify"
+    }
+  }
+}

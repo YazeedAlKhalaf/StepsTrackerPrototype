@@ -1,7 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
+
 import 'account_view_model.dart';
 
 class AccountView extends StatelessWidget {
@@ -48,7 +52,12 @@ class AccountView extends StatelessWidget {
                             Column(
                               children: <Widget>[
                                 Text(
-                                  "Welcome ${model.currentUser.firstName},",
+                                  LocaleKeys.views_account_welcome.tr(
+                                    namedArgs: {
+                                      "name":
+                                          "${model.currentUser?.firstName ?? ""}",
+                                    },
+                                  ),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
@@ -71,7 +80,7 @@ class AccountView extends StatelessWidget {
                                   label: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Text(
-                                      "Sign Out",
+                                      LocaleKeys.views_account_sign_out.tr(),
                                       style: TextStyle(
                                         fontSize: 18,
                                       ),
@@ -105,7 +114,7 @@ class AccountView extends StatelessWidget {
                                 color: KColors.orange,
                               ),
                               title: Text(
-                                "Edit Profile",
+                                LocaleKeys.views_account_edit_profile.tr(),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -121,7 +130,8 @@ class AccountView extends StatelessWidget {
                                 color: KColors.orange,
                               ),
                               title: Text(
-                                "Transaction History",
+                                LocaleKeys.views_account_transaction_history
+                                    .tr(),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -137,7 +147,7 @@ class AccountView extends StatelessWidget {
                                 color: KColors.orange,
                               ),
                               title: Text(
-                                "Settings",
+                                LocaleKeys.views_account_settings.tr(),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,

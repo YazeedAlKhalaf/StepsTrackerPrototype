@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:steps_tracker/app/models/k_user.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 
 import './leaderboard_view_model.dart';
 
@@ -22,7 +25,7 @@ class LeaderboardView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              "Leaderboard",
+              LocaleKeys.views_leaderboard_leaderboard.tr(),
             ),
           ),
           body: SafeArea(
@@ -35,7 +38,7 @@ class LeaderboardView extends StatelessWidget {
                 /// this means there is an error.
                 if (snapshot.hasError) {
                   return Text(
-                    "Something went wrong!",
+                    LocaleKeys.views_home_unknown_error.tr(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
@@ -52,7 +55,7 @@ class LeaderboardView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          "Top 50",
+                          LocaleKeys.views_leaderboard_top_50.tr(),
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -72,7 +75,7 @@ class LeaderboardView extends StatelessWidget {
                               return ListTile(
                                 leading: Text("${index + 1}."),
                                 title: Text(
-                                  "${user.firstName} ${user.lastName} ${model.currentUser.id == user.id ? "(You)" : ""}",
+                                  "${user.firstName} ${user.lastName} ${model.currentUser.id == user.id ? "(${LocaleKeys.views_leaderboard_you.tr()})" : ""}",
                                 ),
                                 trailing: Text(
                                   "${user.stepsCount}",

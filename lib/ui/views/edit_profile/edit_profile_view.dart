@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:steps_tracker/app/global/validators.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 import 'package:steps_tracker/app/utils/utils.dart';
 import 'package:steps_tracker/ui/views/edit_profile/edit_profile_view_model.dart';
@@ -25,7 +28,7 @@ class EditProfileView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              "Edit Profile",
+              LocaleKeys.views_edit_profile_edit_profile.tr(),
             ),
           ),
           body: SafeArea(
@@ -74,7 +77,9 @@ class EditProfileView extends StatelessWidget {
                                 primary: KColors.orange,
                               ),
                               child: Text(
-                                "Change profile image",
+                                LocaleKeys
+                                    .views_edit_profile_change_profile_image
+                                    .tr(),
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
@@ -94,7 +99,9 @@ class EditProfileView extends StatelessWidget {
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    labelText: "First Name",
+                                    labelText: LocaleKeys
+                                        .views_edit_profile_first_name
+                                        .tr(),
                                   ),
                                   validator: (String firstName) {
                                     return validateName(firstName, true);
@@ -109,7 +116,9 @@ class EditProfileView extends StatelessWidget {
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    labelText: "Last Name",
+                                    labelText: LocaleKeys
+                                        .views_edit_profile_last_name
+                                        .tr(),
                                   ),
                                   validator: (String lastName) {
                                     return validateName(lastName, false);
@@ -124,7 +133,7 @@ class EditProfileView extends StatelessWidget {
                           padding: const EdgeInsets.all(15),
                           child: ElevatedButton(
                             child: Text(
-                              "Update Profile",
+                              LocaleKeys.views_edit_profile_update_profile.tr(),
                             ),
                             style: ElevatedButton.styleFrom(
                               primary: KColors.orange,

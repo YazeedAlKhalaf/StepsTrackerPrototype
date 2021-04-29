@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:steps_tracker/app/global/validators.dart';
+import 'package:steps_tracker/app/translations/locale_keys.g.dart';
 import 'package:steps_tracker/app/utils/colors.dart';
 
 import './register_view_model.dart';
@@ -28,7 +31,7 @@ class RegisterView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Register",
+                        LocaleKeys.views_register_register.tr(),
                         style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
@@ -55,7 +58,9 @@ class RegisterView extends StatelessWidget {
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    labelText: "First Name",
+                                    labelText: LocaleKeys
+                                        .views_register_first_name
+                                        .tr(),
                                   ),
                                   validator: (String firstName) {
                                     return validateName(firstName, true);
@@ -70,7 +75,9 @@ class RegisterView extends StatelessWidget {
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    labelText: "Last Name",
+                                    labelText: LocaleKeys
+                                        .views_register_last_name
+                                        .tr(),
                                   ),
                                   validator: (String lastName) {
                                     return validateName(lastName, false);
@@ -86,7 +93,8 @@ class RegisterView extends StatelessWidget {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              labelText: "Phone Number",
+                              labelText:
+                                  LocaleKeys.views_register_phone_number.tr(),
                             ),
                             validator: (String phoneNumber) {
                               return validatePhoneNumber(phoneNumber);
@@ -115,7 +123,7 @@ class RegisterView extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(15),
                                     child: Text(
-                                      "Register",
+                                      LocaleKeys.views_register_register.tr(),
                                       style: TextStyle(
                                         fontSize: 18,
                                       ),
@@ -138,7 +146,7 @@ class RegisterView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Text(
-                        "Already have an account? Login!",
+                        LocaleKeys.views_register_already_have_account.tr(),
                         style: TextStyle(
                           color: KColors.blue,
                           fontWeight: FontWeight.bold,
