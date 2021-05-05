@@ -6,6 +6,7 @@ import 'package:steps_tracker/app/locator/locator.dart';
 import 'package:steps_tracker/app/router/router.dart';
 import 'package:steps_tracker/app/services/localization_service.dart';
 import 'package:steps_tracker/app/services/router_service.dart';
+import 'package:steps_tracker/ui/views/settings/widgets/appearance_tile.dart';
 import 'package:steps_tracker/ui/views/settings/widgets/language_tile.dart';
 import 'package:theme_mode_builder/theme_mode_builder.dart';
 
@@ -36,35 +37,35 @@ class SettingsView extends StatelessWidget {
                   SettingsSection(
                     title: LocaleKeys.views_settings_appearance.tr(),
                     children: <Widget>[
-                      ListTile(
-                        leading: Icon(
-                          FontAwesomeIcons.sun,
-                          size: 30,
-                        ),
-                        title: Text(LocaleKeys.views_settings_light.tr()),
+                      AppearanceTile(
+                        icon: FontAwesomeIcons.sun,
+                        text: LocaleKeys.views_settings_light.tr(),
                         onTap: () async {
                           ThemeModeBuilderConfig.setLight();
+                          model.notifyListeners();
                         },
+                        isActive: ThemeModeBuilderConfig.getThemeMode() ==
+                            ThemeMode.light,
                       ),
-                      ListTile(
-                        leading: Icon(
-                          FontAwesomeIcons.moon,
-                          size: 30,
-                        ),
-                        title: Text(LocaleKeys.views_settings_dark.tr()),
+                      AppearanceTile(
+                        icon: FontAwesomeIcons.moon,
+                        text: LocaleKeys.views_settings_dark.tr(),
                         onTap: () async {
                           ThemeModeBuilderConfig.setDark();
+                          model.notifyListeners();
                         },
+                        isActive: ThemeModeBuilderConfig.getThemeMode() ==
+                            ThemeMode.dark,
                       ),
-                      ListTile(
-                        leading: Icon(
-                          FontAwesomeIcons.mobileAlt,
-                          size: 30,
-                        ),
-                        title: Text(LocaleKeys.views_settings_system.tr()),
+                      AppearanceTile(
+                        icon: FontAwesomeIcons.mobileAlt,
+                        text: LocaleKeys.views_settings_system.tr(),
                         onTap: () async {
                           ThemeModeBuilderConfig.setSystem();
+                          model.notifyListeners();
                         },
+                        isActive: ThemeModeBuilderConfig.getThemeMode() ==
+                            ThemeMode.system,
                       ),
                     ],
                   ),
