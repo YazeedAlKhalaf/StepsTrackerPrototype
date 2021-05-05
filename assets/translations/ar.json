@@ -48,7 +48,9 @@
       "total_steps": "مجموع الخطوات",
       "total_distance": "المسافة الكلية",
       "km_kilotmeter": "كم",
-      "see_leaderboard": "اطلع على لوحة المتصدرين"
+      "see_leaderboard": "اطلع على لوحة المتصدرين",
+      "bmi_calculator": "حاسبة مؤشر كتلة الجسم",
+      "tools": "الأدوات"
     },
     "leaderboard": {
       "leaderboard": "لوحة المتصدرين",
@@ -96,6 +98,18 @@
       "login": "تسجيل دخول",
       "phone_number": "رقم الجوال",
       "have_no_account": "ليس لديك حساب؟ أنشئ حسابا!"
+    },
+    "bmi_calculator": {
+      "bmi_calculator": "حاسبة مؤشر كتلة الجسم",
+      "overweight": "وزن زائد",
+      "normal": "طبيعي",
+      "below_normal": "أقل من الطبيعي",
+      "weight": "الوزن",
+      "height": "الطول",
+      "kg": "كج",
+      "cm": "سم",
+      "calculate": "احسب",
+      "bmi": "مؤشر كتلة الجسم"
     }
   },
   "widgets": {

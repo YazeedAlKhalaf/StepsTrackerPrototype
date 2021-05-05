@@ -357,6 +357,42 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 15,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        LocaleKeys.views_home_tools.tr(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // bmi calculator
+                ListTile(
+                  leading: Icon(
+                    FontAwesomeIcons.tachometerAlt,
+                    color: KColors.orange,
+                  ),
+                  title: Text(
+                    LocaleKeys.views_home_bmi_calculator.tr(),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onTap: () async {
+                    await model.navigateToBmiCalculatorView();
+                  },
+                ),
               ],
             ),
           ),

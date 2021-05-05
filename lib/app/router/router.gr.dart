@@ -7,6 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 import 'package:steps_tracker/ui/views/account/account_view.dart' as _i9;
+import 'package:steps_tracker/ui/views/bmi_calculator/bmi_calculator_view.dart'
+    as _i14;
 import 'package:steps_tracker/ui/views/edit_profile/edit_profile_view.dart'
     as _i13;
 import 'package:steps_tracker/ui/views/history/history_view.dart' as _i11;
@@ -31,8 +33,7 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
           routeData: routeData, child: _i3.StartupView());
     },
     HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      final args = routeData.argsAs<HomeRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData,
           child: _i4.HomeView(
@@ -74,6 +75,10 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
     EditProfileRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i13.EditProfileView());
+    },
+    BmiCalculatorRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i14.BmiCalculatorView());
     }
   };
 
@@ -89,7 +94,8 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(RewardsRoute.name, path: '/rewards-view'),
         _i1.RouteConfig(HistoryRoute.name, path: '/history-view'),
         _i1.RouteConfig(SettingsRoute.name, path: '/settings-view'),
-        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-view')
+        _i1.RouteConfig(EditProfileRoute.name, path: '/edit-profile-view'),
+        _i1.RouteConfig(BmiCalculatorRoute.name, path: '/bmi-calculator-view')
       ];
 }
 
@@ -100,7 +106,7 @@ class StartupRoute extends _i1.PageRouteInfo {
 }
 
 class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({_i2.Key? key, void Function()? onSeeLeaderboardPressed})
+  HomeRoute({_i2.Key? key, required void Function()? onSeeLeaderboardPressed})
       : super(name,
             path: '/home-view',
             args: HomeRouteArgs(
@@ -110,7 +116,7 @@ class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
 }
 
 class HomeRouteArgs {
-  const HomeRouteArgs({this.key, this.onSeeLeaderboardPressed});
+  const HomeRouteArgs({this.key, required this.onSeeLeaderboardPressed});
 
   final _i2.Key? key;
 
@@ -169,4 +175,10 @@ class EditProfileRoute extends _i1.PageRouteInfo {
   const EditProfileRoute() : super(name, path: '/edit-profile-view');
 
   static const String name = 'EditProfileRoute';
+}
+
+class BmiCalculatorRoute extends _i1.PageRouteInfo {
+  const BmiCalculatorRoute() : super(name, path: '/bmi-calculator-view');
+
+  static const String name = 'BmiCalculatorRoute';
 }

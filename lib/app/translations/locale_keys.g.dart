@@ -44,6 +44,8 @@ abstract class  LocaleKeys {
   static const views_home_total_distance = 'views.home.total_distance';
   static const views_home_km_kilotmeter = 'views.home.km_kilotmeter';
   static const views_home_see_leaderboard = 'views.home.see_leaderboard';
+  static const views_home_bmi_calculator = 'views.home.bmi_calculator';
+  static const views_home_tools = 'views.home.tools';
   static const views_home = 'views.home';
   static const views_leaderboard_leaderboard = 'views.leaderboard.leaderboard';
   static const views_leaderboard_unknown_error = 'views.leaderboard.unknown_error';
@@ -86,6 +88,17 @@ abstract class  LocaleKeys {
   static const views_login_phone_number = 'views.login.phone_number';
   static const views_login_have_no_account = 'views.login.have_no_account';
   static const views_login = 'views.login';
+  static const views_bmi_calculator_bmi_calculator = 'views.bmi_calculator.bmi_calculator';
+  static const views_bmi_calculator_overweight = 'views.bmi_calculator.overweight';
+  static const views_bmi_calculator_normal = 'views.bmi_calculator.normal';
+  static const views_bmi_calculator_below_normal = 'views.bmi_calculator.below_normal';
+  static const views_bmi_calculator_weight = 'views.bmi_calculator.weight';
+  static const views_bmi_calculator_height = 'views.bmi_calculator.height';
+  static const views_bmi_calculator_kg = 'views.bmi_calculator.kg';
+  static const views_bmi_calculator_cm = 'views.bmi_calculator.cm';
+  static const views_bmi_calculator_calculate = 'views.bmi_calculator.calculate';
+  static const views_bmi_calculator_bmi = 'views.bmi_calculator.bmi';
+  static const views_bmi_calculator = 'views.bmi_calculator';
   static const views = 'views';
   static const widgets_verification_ui_verify_phone_number = 'widgets.verification_ui.verify_phone_number';
   static const widgets_verification_ui_be_patient_sms_code_sent = 'widgets.verification_ui.be_patient_sms_code_sent';

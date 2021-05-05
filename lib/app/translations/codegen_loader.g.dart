@@ -64,7 +64,9 @@ class CodegenLoader extends AssetLoader{
       "total_steps": "مجموع الخطوات",
       "total_distance": "المسافة الكلية",
       "km_kilotmeter": "كم",
-      "see_leaderboard": "اطلع على لوحة المتصدرين"
+      "see_leaderboard": "اطلع على لوحة المتصدرين",
+      "bmi_calculator": "حاسبة مؤشر كتلة الجسم",
+      "tools": "الأدوات"
     },
     "leaderboard": {
       "leaderboard": "لوحة المتصدرين",
@@ -112,6 +114,18 @@ class CodegenLoader extends AssetLoader{
       "login": "تسجيل دخول",
       "phone_number": "رقم الجوال",
       "have_no_account": "ليس لديك حساب؟ أنشئ حسابا!"
+    },
+    "bmi_calculator": {
+      "bmi_calculator": "حاسبة مؤشر كتلة الجسم",
+      "overweight": "وزن زائد",
+      "normal": "طبيعي",
+      "below_normal": "أقل من الطبيعي",
+      "weight": "الوزن",
+      "height": "الطول",
+      "kg": "كج",
+      "cm": "سم",
+      "calculate": "احسب",
+      "bmi": "مؤشر كتلة الجسم"
     }
   },
   "widgets": {
@@ -173,7 +187,9 @@ static const Map<String,dynamic> en = {
       "total_steps": "total steps",
       "total_distance": "total distance",
       "km_kilotmeter": "KM",
-      "see_leaderboard": "See leaderboard"
+      "see_leaderboard": "See leaderboard",
+      "bmi_calculator": "BMI Calculator",
+      "tools": "Tools"
     },
     "leaderboard": {
       "leaderboard": "Leaderboard",
@@ -221,6 +237,18 @@ static const Map<String,dynamic> en = {
       "login": "Login",
       "phone_number": "Phone Number",
       "have_no_account": "Have no account? Register!"
+    },
+    "bmi_calculator": {
+      "bmi_calculator": "BMI Calculator",
+      "overweight": "Overweight",
+      "normal": "Normal",
+      "below_normal": "Below normal",
+      "weight": "Weight",
+      "height": "Height",
+      "kg": "kg",
+      "cm": "cm",
+      "calculate": "Calculate",
+      "bmi": "BMI"
     }
   },
   "widgets": {

@@ -51,6 +51,12 @@ class HomeViewModel extends CustomBaseViewModel {
     );
   }
 
+  Future<void> navigateToBmiCalculatorView() async {
+    await _routerService!.router.push(
+      BmiCalculatorRoute(),
+    );
+  }
+
   Future<void> showUserEarnedHealthPoints() async {
     FlashHelper.successBar(
       context!,

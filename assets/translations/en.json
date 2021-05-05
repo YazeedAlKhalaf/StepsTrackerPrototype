@@ -48,7 +48,9 @@
       "total_steps": "total steps",
       "total_distance": "total distance",
       "km_kilotmeter": "KM",
-      "see_leaderboard": "See leaderboard"
+      "see_leaderboard": "See leaderboard",
+      "bmi_calculator": "BMI Calculator",
+      "tools": "Tools"
     },
     "leaderboard": {
       "leaderboard": "Leaderboard",
@@ -96,6 +98,18 @@
       "login": "Login",
       "phone_number": "Phone Number",
       "have_no_account": "Have no account? Register!"
+    },
+    "bmi_calculator": {
+      "bmi_calculator": "BMI Calculator",
+      "overweight": "Overweight",
+      "normal": "Normal",
+      "below_normal": "Below normal",
+      "weight": "Weight",
+      "height": "Height",
+      "kg": "kg",
+      "cm": "cm",
+      "calculate": "Calculate",
+      "bmi": "BMI"
     }
   },
   "widgets": {

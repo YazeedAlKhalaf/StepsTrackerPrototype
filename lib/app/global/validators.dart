@@ -86,3 +86,31 @@ String? validateVerificationCode(String verificationCode) {
     return null;
   }
 }
+
+String? validateWeight(String weight) {
+  final String weightTrimmed = weight.trim();
+
+  if (weightTrimmed.isEmpty) {
+    return LocaleKeys.validators_cant_empty.tr(
+      namedArgs: {
+        "field": LocaleKeys.views_bmi_calculator_weight.tr(),
+      },
+    );
+  }
+
+  return null;
+}
+
+String? validateHeight(String height) {
+  final String heightTrimmed = height.trim();
+
+  if (heightTrimmed.isEmpty) {
+    return LocaleKeys.validators_cant_empty.tr(
+      namedArgs: {
+        "field": LocaleKeys.views_bmi_calculator_height.tr(),
+      },
+    );
+  }
+
+  return null;
+}

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:steps_tracker/ui/views/account/account_view.dart';
+import 'package:steps_tracker/ui/views/bmi_calculator/bmi_calculator_view.dart';
 import 'package:steps_tracker/ui/views/edit_profile/edit_profile_view.dart';
 import 'package:steps_tracker/ui/views/history/history_view.dart';
 import 'package:steps_tracker/ui/views/home/home_view.dart';
@@ -27,6 +28,7 @@ export './router.gr.dart';
     AutoRoute(page: HistoryView),
     AutoRoute(page: SettingsView),
     AutoRoute(page: EditProfileView),
+    AutoRoute(page: BmiCalculatorView),
   ],
 )
 class $StepsTrackerRouter {}
