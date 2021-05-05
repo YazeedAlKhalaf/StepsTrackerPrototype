@@ -39,11 +39,15 @@ class BmiCalculatorView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
-                            "${LocaleKeys.views_bmi_calculator_bmi.tr()}: ${model.bmi.toStringAsFixed(2)}",
-                            style: TextStyle(
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: FittedBox(
+                              child: Text(
+                                "${LocaleKeys.views_bmi_calculator_bmi.tr()}: ${model.bmi.toStringAsFixed(2)}",
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
                         ],
