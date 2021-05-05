@@ -12,7 +12,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// initialize hive box of the theme mode
-  await ThemeModeBuilderConfig.ensureInitialized();
+  await ThemeModeBuilderConfig.ensureInitialized(
+    subDir: "Steps Tracker",
+  );
 
   /// initialize easy localization
   await EasyLocalization.ensureInitialized();
