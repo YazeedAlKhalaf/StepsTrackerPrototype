@@ -17,7 +17,8 @@
   - [x] Each reward is linked to one partner
   - [x] Buy rewards with health points
 - [x] Leaderboard showing first 50 people in terms of steps since the app installation
-- [ ] Work in background mode
+- [x] Work in background mode
+- [ ] Send notifications in background mode
 - [x] Support dark mode
 - [x] Support Arabic and English languages
 - [ ] Give a fancy name for the health points, e.g. "Run Coins" 😂
