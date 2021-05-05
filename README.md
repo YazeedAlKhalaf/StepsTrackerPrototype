@@ -1,6 +1,5 @@
-<p style="text-align: center;">
+<p align="center">
 <img src="assets/images/steps_tracker_logo.jpg" alt="Steps Tracker Logo" width="150px" />
-</p>
 
 # Steps Tracker
 
