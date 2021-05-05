@@ -9,7 +9,7 @@ import 'package:theme_mode_builder/theme_mode_builder.dart';
 class StepsTrackerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final RouterService _routerService = locator<RouterService>();
+    final RouterService? _routerService = locator<RouterService>();
 
     return EasyLocalization(
       path: "assets/translations",
@@ -36,12 +36,12 @@ class StepsTrackerApp extends StatelessWidget {
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             localizationsDelegates: context.localizationDelegates,
-            routerDelegate: _routerService.router.delegate(),
+            routerDelegate: _routerService!.router.delegate(),
             routeInformationParser: _routerService.router.defaultRouteParser(),
-            builder: (BuildContext context, Widget child) {
+            builder: (BuildContext context, Widget? child) {
               return GestureDetector(
                 onTap: () {
-                  FocusManager.instance.primaryFocus.unfocus();
+                  FocusManager.instance.primaryFocus!.unfocus();
                 },
                 child: child,
               );

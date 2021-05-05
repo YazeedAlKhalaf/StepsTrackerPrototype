@@ -11,30 +11,32 @@ enum SupportedLocales {
   ar,
 }
 
-// ignore: missing_return
 String convertLanguageEnumToString(SupportedLocales language) {
   switch (language) {
     case SupportedLocales.en:
       return "en";
     case SupportedLocales.ar:
       return "ar";
+    default:
+      return "en";
   }
 }
 
-// ignore: missing_return
-SupportedLocales convertStringToLanguageEnum(String languageString) {
+SupportedLocales convertStringToLanguageEnum(String? languageString) {
   switch (languageString) {
     case "en":
       return SupportedLocales.en;
     case "ar":
       return SupportedLocales.ar;
+    default:
+      return SupportedLocales.en;
   }
 }
 
 @lazySingleton
 class LocalizationService {
-  final AuthService _authService = locator<AuthService>();
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  final AuthService? _authService = locator<AuthService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
 
   Future<void> changeLocale(
     BuildContext context,
@@ -53,9 +55,9 @@ class LocalizationService {
         break;
     }
 
-    await EasyLocalization.of(context).setLocale(locale);
-    await _firestoreService.updateUserLanguage(
-      userId: _authService.currentFirebaseUser.uid,
+    await EasyLocalization.of(context)!.setLocale(locale);
+    await _firestoreService!.updateUserLanguage(
+      userId: _authService!.currentFirebaseUser!.uid,
       newLanguage: newLocale,
     );
   }

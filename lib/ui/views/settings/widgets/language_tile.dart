@@ -8,11 +8,11 @@ class LanguageTile extends StatelessWidget {
   final Function() onTap;
 
   const LanguageTile({
-    Key key,
-    @required this.title,
-    @required this.emoji,
-    @required this.showCheck,
-    @required this.onTap,
+    Key? key,
+    required this.title,
+    required this.emoji,
+    required this.showCheck,
+    required this.onTap,
   }) : super(key: key);
 
   @override

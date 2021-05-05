@@ -12,25 +12,25 @@ import 'package:steps_tracker/app/services/router_service.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 
 class HomeViewModel extends CustomBaseViewModel {
-  final RouterService _routerService = locator<RouterService>();
-  final FitnessService _fitnessService = locator<FitnessService>();
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  final RouterService? _routerService = locator<RouterService>();
+  final FitnessService? _fitnessService = locator<FitnessService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
 
   StreamController<int> stepsCountLocal = StreamController<int>();
 
   int get stepsGoal => 8000;
 
-  BuildContext _context;
-  BuildContext get context => _context;
+  BuildContext? _context;
+  BuildContext? get context => _context;
   void setContext(BuildContext newValue) {
     _context = newValue;
     notifyListeners();
   }
 
   Future<void> init({
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
-    _fitnessService.init();
+    _fitnessService!.init();
 
     stepsCountLocal.stream.listen((int newStepsCount) async {
       if (newStepsCount % 100 == 0 && newStepsCount > 1) {
@@ -42,27 +42,27 @@ class HomeViewModel extends CustomBaseViewModel {
   }
 
   Stream<int> getStepsCountStream() {
-    return _fitnessService.stepsCountController.stream;
+    return _fitnessService!.stepsCountController.stream;
   }
 
   Future<void> navigateToLeaderboardView() async {
-    await _routerService.router.push(
+    await _routerService!.router.push(
       LeaderboardRoute(),
     );
   }
 
   Future<void> showUserEarnedHealthPoints() async {
     FlashHelper.successBar(
-      context,
+      context!,
       message: "Congrats! You earned 1 health point 🎉!",
     );
 
-    await _firestoreService.updateHealthPoints(
-      userId: currentFirebaseUser.uid,
+    await _firestoreService!.updateHealthPoints(
+      userId: currentFirebaseUser!.uid,
     );
 
-    await _firestoreService.addHistoryItem(
-      userId: currentFirebaseUser.uid,
+    await _firestoreService!.addHistoryItem(
+      userId: currentFirebaseUser!.uid,
       historyItem: KHistoryItem(
         id: null,
         amount: 1,

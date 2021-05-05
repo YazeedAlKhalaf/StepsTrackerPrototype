@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 /// Validators file, each function validates a field
 
-String validateName(String name, bool first) {
+String? validateName(String name, bool first) {
   final String trimmedName = name.trim();
   final String firstOrLast = first
       ? LocaleKeys.validators_first.tr()
@@ -34,11 +34,11 @@ String validateName(String name, bool first) {
   }
 }
 
-String validatePhoneNumber(String phoneNumber) {
+String? validatePhoneNumber(String phoneNumber) {
   final String trimmedPhoneNumber = phoneNumber.trim();
 
   /// Regular expression match for Saudi phone number
-  final RegExpMatch phoneNumberMatch =
+  final RegExpMatch? phoneNumberMatch =
       RegExp(r"^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$")
           .firstMatch(trimmedPhoneNumber);
 
@@ -66,7 +66,7 @@ String validatePhoneNumber(String phoneNumber) {
   }
 }
 
-String validateVerificationCode(String verificationCode) {
+String? validateVerificationCode(String verificationCode) {
   final String trimmedVerificationCode = verificationCode.trim();
 
   if (trimmedVerificationCode.isEmpty) {

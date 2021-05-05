@@ -17,7 +17,7 @@ class LoginView extends StatelessWidget {
       builder: (
         BuildContext context,
         LoginViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           body: SafeArea(
@@ -59,8 +59,8 @@ class LoginView extends StatelessWidget {
                               labelText:
                                   LocaleKeys.views_login_phone_number.tr(),
                             ),
-                            validator: (String phoneNumber) {
-                              return validatePhoneNumber(phoneNumber);
+                            validator: (String? phoneNumber) {
+                              return validatePhoneNumber(phoneNumber!);
                             },
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[

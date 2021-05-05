@@ -24,7 +24,7 @@ class RewardsView extends StatelessWidget {
       builder: (
         BuildContext context,
         RewardsViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           appBar: AppBar(
@@ -38,7 +38,7 @@ class RewardsView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    "${LocaleKeys.views_rewards_health_points.tr()}: ${model.currentUser.healthPoints}",
+                    "${LocaleKeys.views_rewards_health_points.tr()}: ${model.currentUser!.healthPoints}",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class RewardsView extends StatelessWidget {
                                 ),
                                 FittedBox(
                                   child: Text(
-                                    reward.name,
+                                    reward.name!,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
@@ -104,8 +104,8 @@ class RewardsView extends StatelessWidget {
                                   return GestureDetector(
                                     onTap: () async {
                                       await model.refreshUserData();
-                                      if (model.currentUser.healthPoints <
-                                          reward.price) {
+                                      if (model.currentUser!.healthPoints! <
+                                          reward.price!) {
                                         FlashHelper.errorBar(
                                           context,
                                           message: LocaleKeys
@@ -163,9 +163,9 @@ class RewardsView extends StatelessWidget {
                                             onPressed: () async {
                                               await model.refreshUserData();
 
-                                              if (model.currentUser
-                                                      .healthPoints <
-                                                  reward.price) {
+                                              if (model.currentUser!
+                                                      .healthPoints! <
+                                                  reward.price!) {
                                                 FlashHelper.errorBar(
                                                   context,
                                                   message: LocaleKeys
@@ -235,7 +235,7 @@ class RewardsView extends StatelessWidget {
                                   onTap: () {
                                     if (reward.isSold &&
                                         reward.ownerId ==
-                                            model.currentUser.id) {
+                                            model.currentUser!.id) {
                                       FlashHelper.simpleDialog(
                                         context,
                                         title: LocaleKeys.views_rewards_congrats
@@ -299,7 +299,7 @@ class RewardsView extends StatelessWidget {
                                   ),
                                 ),
                               if (reward.isSold &&
-                                  reward.ownerId == model.currentUser.id)
+                                  reward.ownerId == model.currentUser!.id)
                                 Positioned(
                                   bottom: 32.5,
                                   child: Text(

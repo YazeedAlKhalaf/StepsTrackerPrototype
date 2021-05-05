@@ -20,7 +20,7 @@ class LeaderboardView extends StatelessWidget {
       builder: (
         BuildContext context,
         LeaderboardViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           appBar: AppBar(
@@ -29,11 +29,11 @@ class LeaderboardView extends StatelessWidget {
             ),
           ),
           body: SafeArea(
-            child: FutureBuilder<List<KUser>>(
+            child: FutureBuilder<List<KUser>?>(
               future: model.getLeaderboard(),
               builder: (
                 BuildContext context,
-                AsyncSnapshot<List<KUser>> snapshot,
+                AsyncSnapshot<List<KUser>?> snapshot,
               ) {
                 /// this means there is an error.
                 if (snapshot.hasError) {
@@ -48,7 +48,7 @@ class LeaderboardView extends StatelessWidget {
 
                 /// this means there is data.
                 if (snapshot.hasData) {
-                  final List<KUser> usersList = snapshot.data;
+                  final List<KUser> usersList = snapshot.data!;
 
                   return Column(
                     children: <Widget>[
@@ -75,7 +75,7 @@ class LeaderboardView extends StatelessWidget {
                               return ListTile(
                                 leading: Text("${index + 1}."),
                                 title: Text(
-                                  "${user.firstName} ${user.lastName} ${model.currentUser.id == user.id ? "(${LocaleKeys.views_leaderboard_you.tr()})" : ""}",
+                                  "${user.firstName} ${user.lastName} ${model.currentUser!.id == user.id ? "(${LocaleKeys.views_leaderboard_you.tr()})" : ""}",
                                 ),
                                 trailing: Text(
                                   "${user.stepsCount}",

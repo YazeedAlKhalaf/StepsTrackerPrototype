@@ -17,7 +17,7 @@ class RegisterView extends StatelessWidget {
       builder: (
         BuildContext context,
         RegisterViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           body: SafeArea(
@@ -62,8 +62,8 @@ class RegisterView extends StatelessWidget {
                                         .views_register_first_name
                                         .tr(),
                                   ),
-                                  validator: (String firstName) {
-                                    return validateName(firstName, true);
+                                  validator: (String? firstName) {
+                                    return validateName(firstName!, true);
                                   },
                                 ),
                               ),
@@ -79,8 +79,8 @@ class RegisterView extends StatelessWidget {
                                         .views_register_last_name
                                         .tr(),
                                   ),
-                                  validator: (String lastName) {
-                                    return validateName(lastName, false);
+                                  validator: (String? lastName) {
+                                    return validateName(lastName!, false);
                                   },
                                 ),
                               ),
@@ -96,8 +96,8 @@ class RegisterView extends StatelessWidget {
                               labelText:
                                   LocaleKeys.views_register_phone_number.tr(),
                             ),
-                            validator: (String phoneNumber) {
-                              return validatePhoneNumber(phoneNumber);
+                            validator: (String? phoneNumber) {
+                              return validatePhoneNumber(phoneNumber!);
                             },
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[

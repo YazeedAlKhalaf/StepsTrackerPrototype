@@ -5,9 +5,9 @@ class SettingsSection extends StatelessWidget {
   final List<Widget> children;
 
   const SettingsSection({
-    Key key,
-    @required this.title,
-    @required this.children,
+    Key? key,
+    required this.title,
+    required this.children,
   }) : super(key: key);
 
   @override

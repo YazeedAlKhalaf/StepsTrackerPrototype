@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:steps_tracker/app/global/custom_base_view_model.dart';
@@ -15,8 +14,8 @@ import 'package:steps_tracker/app/utils/utils.dart';
 import 'package:steps_tracker/ui/widgets/veritifcation_ui.dart';
 
 class LoginViewModel extends CustomBaseViewModel {
-  final AuthService _authService = locator<AuthService>();
-  final RouterService _routerService = locator<RouterService>();
+  final AuthService? _authService = locator<AuthService>();
+  final RouterService? _routerService = locator<RouterService>();
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
@@ -32,31 +31,31 @@ class LoginViewModel extends CustomBaseViewModel {
     notifyListeners();
   }
 
-  String _verificationId;
-  String get verificationId => _verificationId;
+  String? _verificationId;
+  String? get verificationId => _verificationId;
   void setVerificationId(String newValue) {
     _verificationId = newValue;
     notifyListeners();
   }
 
-  int _resendToken;
-  int get resendToken => _resendToken;
-  void setResendToken(int newValue) {
+  int? _resendToken;
+  int? get resendToken => _resendToken;
+  void setResendToken(int? newValue) {
     _resendToken = newValue;
     notifyListeners();
   }
 
-  ConfirmationResult _confirmationResult;
-  ConfirmationResult get confirmationResult => _confirmationResult;
+  ConfirmationResult? _confirmationResult;
+  ConfirmationResult? get confirmationResult => _confirmationResult;
   void setConfirmationResult(ConfirmationResult newValue) {
     _confirmationResult = newValue;
     notifyListeners();
   }
 
   Future<void> loginUser({
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
-    if (loginFormKey.currentState.validate()) {
+    if (loginFormKey.currentState!.validate()) {
       setBusy(true);
       final String phoneNumberTrimmed = Utils.formatPhoneNumber(
         phoneNumber: phoneNumberController.text.trim(),
@@ -107,12 +106,12 @@ class LoginViewModel extends CustomBaseViewModel {
   }
 
   Future<dynamic> _getVerificationId({
-    @required String phoneNumber,
+    required String phoneNumber,
   }) async {
     /// get verification id
-    final dynamic response = await _authService.sendVerificationCode(
+    final dynamic response = await _authService!.sendVerificationCode(
       phoneNumber: phoneNumber,
-      codeSent: (String verificationId, int resendToken) {
+      codeSent: (String verificationId, int? resendToken) {
         print(
           "(codeSent) Verification ID: $verificationId",
         );
@@ -134,8 +133,8 @@ class LoginViewModel extends CustomBaseViewModel {
   }
 
   Future<void> doVerification({
-    @required BuildContext context,
-    @required String phoneNumber,
+    required BuildContext context,
+    required String phoneNumber,
   }) async {
     removeFocus();
     final String verificationCodeString =
@@ -143,8 +142,8 @@ class LoginViewModel extends CustomBaseViewModel {
 
     if (verificationCodeString.length == 6) {
       /// verify the phone number
-      final dynamic response = await _authService.verifyPhoneNumber(
-        verificationId: verificationId,
+      final dynamic response = await _authService!.verifyPhoneNumber(
+        verificationId: verificationId!,
         verificationCode: verificationCodeString,
         phoneNumber: phoneNumber,
       );
@@ -158,7 +157,7 @@ class LoginViewModel extends CustomBaseViewModel {
       } else {
         /// go to home view
         await goBack();
-        await _routerService.router.pushAndPopUntil(
+        await _routerService!.router.pushAndPopUntil(
           MainRoute(),
           predicate: (_) => false,
         );
@@ -167,7 +166,7 @@ class LoginViewModel extends CustomBaseViewModel {
   }
 
   Future<void> navigateToRegisterView() async {
-    await _routerService.router.pushAndPopUntil(
+    await _routerService!.router.pushAndPopUntil(
       RegisterRoute(),
       predicate: (_) => false,
     );

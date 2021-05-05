@@ -7,10 +7,10 @@ import 'package:steps_tracker/app/services/firestore_service.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 
 class RewardsViewModel extends CustomBaseViewModel {
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
 
-  BuildContext _context;
-  BuildContext get context => _context;
+  BuildContext? _context;
+  BuildContext? get context => _context;
   void setContext(BuildContext newValue) {
     _context = newValue;
     notifyListeners();
@@ -24,18 +24,18 @@ class RewardsViewModel extends CustomBaseViewModel {
   }
 
   Future<void> init({
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
     setContext(context);
     await getRewards();
   }
 
   Future<void> getRewards() async {
-    final dynamic response = await _firestoreService.getRewards();
+    final dynamic response = await _firestoreService!.getRewards();
 
     if (response is KError) {
       FlashHelper.errorBar(
-        context,
+        context!,
         message: response.userFriendlyMessage,
       );
       return;
@@ -45,16 +45,16 @@ class RewardsViewModel extends CustomBaseViewModel {
   }
 
   Future<void> buyReward({
-    @required KReward reward,
+    required KReward reward,
   }) async {
-    final dynamic response = await _firestoreService.buyReward(
-      user: currentUser,
+    final dynamic response = await _firestoreService!.buyReward(
+      user: currentUser!,
       reward: reward,
     );
 
     if (response is KError) {
       FlashHelper.errorBar(
-        context,
+        context!,
         message: response.userFriendlyMessage,
       );
       return;

@@ -5,14 +5,14 @@ import 'package:steps_tracker/app/services/auth_service.dart';
 import 'package:steps_tracker/app/services/router_service.dart';
 
 class AccountViewModel extends CustomBaseViewModel {
-  final AuthService _authService = locator<AuthService>();
-  final RouterService _routerService = locator<RouterService>();
+  final AuthService? _authService = locator<AuthService>();
+  final RouterService? _routerService = locator<RouterService>();
 
   Future<void> signOut() async {
     setBusy(true);
-    await _authService.signOut();
+    await _authService!.signOut();
 
-    await _routerService.router.pushAndPopUntil(
+    await _routerService!.router.pushAndPopUntil(
       RegisterRoute(),
       predicate: (_) => false,
     );
@@ -20,14 +20,14 @@ class AccountViewModel extends CustomBaseViewModel {
   }
 
   Future<void> navigateToHistoryView() async {
-    await _routerService.router.push(HistoryRoute());
+    await _routerService!.router.push(HistoryRoute());
   }
 
   Future<void> navigateToSettingsView() async {
-    await _routerService.router.push(SettingsRoute());
+    await _routerService!.router.push(SettingsRoute());
   }
 
   Future<void> navigateToEditProfileView() async {
-    await _routerService.router.push(EditProfileRoute());
+    await _routerService!.router.push(EditProfileRoute());
   }
 }

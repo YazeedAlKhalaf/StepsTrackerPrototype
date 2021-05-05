@@ -19,7 +19,7 @@ class MainView extends StatelessWidget {
       builder: (
         BuildContext context,
         MainViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           body: SafeArea(

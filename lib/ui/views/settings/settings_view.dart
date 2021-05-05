@@ -21,7 +21,7 @@ class SettingsView extends StatelessWidget {
       builder: (
         BuildContext context,
         SettingsViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           appBar: AppBar(

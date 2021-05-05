@@ -11,11 +11,11 @@ import 'package:steps_tracker/ui/widgets/custom_ring.dart';
 import './home_view_model.dart';
 
 class HomeView extends StatelessWidget {
-  final void Function() onSeeLeaderboardPressed;
+  final void Function()? onSeeLeaderboardPressed;
 
   const HomeView({
-    Key key,
-    @required this.onSeeLeaderboardPressed,
+    Key? key,
+    required this.onSeeLeaderboardPressed,
   }) : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
       builder: (
         BuildContext context,
         HomeViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           body: SafeArea(
@@ -106,7 +106,7 @@ class HomeView extends StatelessWidget {
 
                             /// this means there is data.
                             if (snapshot.hasData) {
-                              final int stepsCount = snapshot.data;
+                              final int stepsCount = snapshot.data ?? 0;
                               final int stepsGoal = model.stepsGoal;
 
                               model.stepsCountLocal.add(stepsCount);
@@ -157,7 +157,7 @@ class HomeView extends StatelessWidget {
                                                       ),
                                                       FittedBox(
                                                         child: Text(
-                                                          "${stepsCount ?? 0}",
+                                                          "$stepsCount",
                                                           style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,

@@ -4,40 +4,40 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class KReward {
-  final String id;
-  final String name;
-  final String description;
-  final String vendor;
-  final String couponCode;
+  final String? id;
+  final String? name;
+  final String? description;
+  final String? vendor;
+  final String? couponCode;
   final List<String> images;
-  final int price;
-  final String ownerId;
-  final Timestamp createdAt;
+  final int? price;
+  final String? ownerId;
+  final Timestamp? createdAt;
 
   bool get isSold => this.ownerId != null;
 
   KReward({
-    @required this.id,
-    @required this.name,
-    @required this.description,
-    @required this.vendor,
-    @required this.couponCode,
-    @required this.images,
-    @required this.price,
-    @required this.ownerId,
-    @required this.createdAt,
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.vendor,
+    required this.couponCode,
+    required this.images,
+    required this.price,
+    required this.ownerId,
+    required this.createdAt,
   });
 
   KReward copyWith({
-    String id,
-    String name,
-    String description,
-    String vendor,
-    String couponCode,
-    List<String> images,
-    int price,
-    String ownerId,
-    Timestamp createdAt,
+    String? id,
+    String? name,
+    String? description,
+    String? vendor,
+    String? couponCode,
+    List<String>? images,
+    int? price,
+    String? ownerId,
+    Timestamp? createdAt,
   }) {
     return KReward(
       id: id ?? this.id,

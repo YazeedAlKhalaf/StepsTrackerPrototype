@@ -11,9 +11,9 @@ import 'package:steps_tracker/app/services/router_service.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 
 class EditProfileViewModel extends CustomBaseViewModel {
-  final FirestoreService _firestoreService = locator<FirestoreService>();
-  final FirestorageService _firestorageService = locator<FirestorageService>();
-  final RouterService _routerService = locator<RouterService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
+  final FirestorageService? _firestorageService = locator<FirestorageService>();
+  final RouterService? _routerService = locator<RouterService>();
 
   final GlobalKey<FormState> editProfileFormKey = GlobalKey<FormState>();
 
@@ -34,50 +34,50 @@ class EditProfileViewModel extends CustomBaseViewModel {
     notifyListeners();
   }
 
-  BuildContext _context;
-  BuildContext get context => _context;
+  BuildContext? _context;
+  BuildContext? get context => _context;
   void setContext(BuildContext newValue) {
     _context = newValue;
     notifyListeners();
   }
 
-  File _pickedImage;
-  File get pickedImage => _pickedImage;
+  File? _pickedImage;
+  File? get pickedImage => _pickedImage;
   void setPickedImage(File newValue) {
     _pickedImage = newValue;
     notifyListeners();
   }
 
   Future<void> init({
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
     setContext(context);
 
     await refreshUserData();
 
-    firstNameController.text = currentUser.firstName;
-    lastNameController.text = currentUser.lastName;
+    firstNameController.text = currentUser!.firstName!;
+    lastNameController.text = currentUser!.lastName!;
   }
 
   Future<void> updateUser() async {
-    if (editProfileFormKey.currentState.validate()) {
+    if (editProfileFormKey.currentState!.validate()) {
       setProgressText("Validating");
       setBusy(true);
 
-      String profileImageUrl;
+      String? profileImageUrl;
 
       if (pickedImage != null) {
         setProgressText("Uploading Profile Image");
         final dynamic uploadProfileImageResponse =
-            await _firestorageService.uploadProfileImage(
-          pickedImage,
+            await _firestorageService!.uploadProfileImage(
+          pickedImage!,
         );
 
         if (uploadProfileImageResponse is KError) {
           setBusy(false);
           setProgressText("");
           FlashHelper.errorBar(
-            context,
+            context!,
             message: uploadProfileImageResponse.userFriendlyMessage,
           );
 
@@ -89,10 +89,10 @@ class EditProfileViewModel extends CustomBaseViewModel {
       }
 
       setProgressText("Updating User Info");
-      final dynamic updateUserResponse = await _firestoreService.updateUser(
-        userId: currentFirebaseUser.uid,
-        firstName: currentUser.firstName,
-        lastName: currentUser.lastName,
+      final dynamic updateUserResponse = await _firestoreService!.updateUser(
+        userId: currentFirebaseUser!.uid,
+        firstName: currentUser!.firstName,
+        lastName: currentUser!.lastName,
         photoUrl: profileImageUrl,
       );
       setProgressText("Updated user data");
@@ -101,7 +101,7 @@ class EditProfileViewModel extends CustomBaseViewModel {
         setBusy(false);
         setProgressText("");
         FlashHelper.errorBar(
-          context,
+          context!,
           message: updateUserResponse.userFriendlyMessage,
         );
 
@@ -111,7 +111,7 @@ class EditProfileViewModel extends CustomBaseViewModel {
       setProgressText("");
       await refreshUserData();
 
-      await _routerService.router.pushAndPopUntil(
+      await _routerService!.router.pushAndPopUntil(
         StartupRoute(),
         predicate: (_) => false,
       );

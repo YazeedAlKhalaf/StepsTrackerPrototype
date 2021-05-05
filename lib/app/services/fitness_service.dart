@@ -9,10 +9,10 @@ import 'package:steps_tracker/app/services/firestore_service.dart';
 
 @lazySingleton
 class FitnessService {
-  final AuthService _authService = locator<AuthService>();
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  final AuthService? _authService = locator<AuthService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
 
-  Stream<StepCount> _stepCountStream;
+  Stream<StepCount>? _stepCountStream;
 
   StreamController<int> _stepsCountController = StreamController<int>();
   StreamController<int> get stepsCountController => _stepsCountController;
@@ -29,8 +29,8 @@ class FitnessService {
     );
 
     _stepsCountController.add(steps);
-    await _firestoreService.updateStepsCount(
-      userId: _authService.currentUser.id,
+    await _firestoreService!.updateStepsCount(
+      userId: _authService!.currentUser!.id,
       newStepsCount: steps,
     );
   }
@@ -54,7 +54,7 @@ class FitnessService {
     _stepCountStream = Pedometer.stepCountStream;
 
     /// listen to steps count stream
-    _stepCountStream.listen(_onStepCount).onError(_onStepCountError);
+    _stepCountStream!.listen(_onStepCount).onError(_onStepCountError);
   }
 
   /// clears the class from all info saved

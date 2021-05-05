@@ -1,43 +1,42 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
 
 import 'package:steps_tracker/app/services/localization_service.dart';
 
 class KUser {
-  final String id;
-  final String firstName;
-  final String lastName;
-  final String phoneNumber;
-  final String photoUrl;
-  final int stepsCount;
-  final int healthPoints;
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+  final String? phoneNumber;
+  final String? photoUrl;
+  final int? stepsCount;
+  final int? healthPoints;
   final SupportedLocales language;
-  final Timestamp createdAt;
+  final Timestamp? createdAt;
 
   const KUser({
-    @required this.id,
-    @required this.firstName,
-    @required this.lastName,
-    @required this.phoneNumber,
-    @required this.photoUrl,
-    @required this.stepsCount,
-    @required this.healthPoints,
-    @required this.language,
-    @required this.createdAt,
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.phoneNumber,
+    required this.photoUrl,
+    required this.stepsCount,
+    required this.healthPoints,
+    required this.language,
+    required this.createdAt,
   });
 
   KUser copyWith({
-    String id,
-    String firstName,
-    String lastName,
-    String phoneNumber,
-    String photoUrl,
-    int stepsCount,
-    int healthPoints,
-    SupportedLocales language,
-    Timestamp createdAt,
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? phoneNumber,
+    String? photoUrl,
+    int? stepsCount,
+    int? healthPoints,
+    SupportedLocales? language,
+    Timestamp? createdAt,
   }) {
     return KUser(
       id: id ?? this.id,
@@ -75,7 +74,7 @@ class KUser {
       photoUrl: map['photoUrl'],
       stepsCount: map['stepsCount'],
       healthPoints: map['healthPoints'],
-      language: convertStringToLanguageEnum(map["language"] as String),
+      language: convertStringToLanguageEnum(map["language"] as String?),
       createdAt: map['createdAt'],
     );
   }

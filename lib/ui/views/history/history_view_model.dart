@@ -7,7 +7,7 @@ import 'package:steps_tracker/app/services/firestore_service.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 
 class HistoryViewModel extends CustomBaseViewModel {
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
 
   List<KHistoryItem> _historyItems = <KHistoryItem>[];
   List<KHistoryItem> get historyItems => _historyItems;
@@ -17,15 +17,15 @@ class HistoryViewModel extends CustomBaseViewModel {
     notifyListeners();
   }
 
-  BuildContext _context;
-  BuildContext get context => _context;
+  BuildContext? _context;
+  BuildContext? get context => _context;
   void setContext(BuildContext newValue) {
     _context = newValue;
     notifyListeners();
   }
 
   Future<void> init({
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
     setContext(context);
     await getHistoryItems();
@@ -33,14 +33,14 @@ class HistoryViewModel extends CustomBaseViewModel {
 
   Future<void> getHistoryItems() async {
     setBusy(true);
-    final dynamic response = await _firestoreService.getHistoryItems(
-      userId: currentFirebaseUser.uid,
+    final dynamic response = await _firestoreService!.getHistoryItems(
+      userId: currentFirebaseUser!.uid,
     );
 
     if (response is KError) {
       setBusy(false);
       FlashHelper.errorBar(
-        context,
+        context!,
         message: response.userFriendlyMessage,
       );
       return;

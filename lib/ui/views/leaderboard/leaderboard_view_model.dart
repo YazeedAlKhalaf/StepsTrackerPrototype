@@ -7,23 +7,23 @@ import 'package:steps_tracker/app/services/firestore_service.dart';
 import 'package:steps_tracker/app/utils/flash_helper.dart';
 
 class LeaderboardViewModel extends CustomBaseViewModel {
-  final FirestoreService _firestoreService = locator<FirestoreService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
 
-  BuildContext _context;
-  BuildContext get context => _context;
+  BuildContext? _context;
+  BuildContext? get context => _context;
   void setContext(BuildContext newValue) {
     _context = newValue;
     notifyListeners();
   }
 
   Future<void> init({
-    @required BuildContext context,
+    required BuildContext context,
   }) async {
     setContext(context);
   }
 
-  Future<List<KUser>> getLeaderboard() async {
-    final dynamic response = await _firestoreService.getLeaderboard();
+  Future<List<KUser>?> getLeaderboard() async {
+    final dynamic response = await _firestoreService!.getLeaderboard();
 
     if (response is List<KUser>) {
       return response;
@@ -31,7 +31,7 @@ class LeaderboardViewModel extends CustomBaseViewModel {
 
     if (response is KError) {
       FlashHelper.errorBar(
-        context,
+        context!,
         message: "Can't get leaderboard data!",
       );
     }

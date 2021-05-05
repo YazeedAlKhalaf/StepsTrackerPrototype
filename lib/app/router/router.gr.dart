@@ -21,7 +21,7 @@ import 'package:steps_tracker/ui/views/settings/settings_view.dart' as _i12;
 import 'package:steps_tracker/ui/views/startup/startup_view.dart' as _i3;
 
 class StepsTrackerRouter extends _i1.RootStackRouter {
-  StepsTrackerRouter([_i2.GlobalKey<_i2.NavigatorState> navigatorKey])
+  StepsTrackerRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -100,7 +100,7 @@ class StartupRoute extends _i1.PageRouteInfo {
 }
 
 class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({_i2.Key key, void Function() onSeeLeaderboardPressed})
+  HomeRoute({_i2.Key? key, void Function()? onSeeLeaderboardPressed})
       : super(name,
             path: '/home-view',
             args: HomeRouteArgs(
@@ -112,9 +112,9 @@ class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
 class HomeRouteArgs {
   const HomeRouteArgs({this.key, this.onSeeLeaderboardPressed});
 
-  final _i2.Key key;
+  final _i2.Key? key;
 
-  final void Function() onSeeLeaderboardPressed;
+  final void Function()? onSeeLeaderboardPressed;
 }
 
 class RegisterRoute extends _i1.PageRouteInfo {

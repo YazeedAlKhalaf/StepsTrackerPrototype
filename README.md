@@ -22,7 +22,7 @@
 - [x] Support dark mode
 - [x] Support Arabic and English languages
 - [ ] Give a fancy name for the health points, e.g. "Run Coins" 😂
-- [ ] Support null-safety
+- [x] Support null-safety
 - [x] Strong security rules for cloud firestore
 
 ## Requirements

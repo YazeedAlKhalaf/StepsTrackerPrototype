@@ -1,32 +1,31 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 import 'package:steps_tracker/app/models/k_reward.dart';
 
 class KHistoryItem {
-  final String id;
-  final int amount;
+  final String? id;
+  final int? amount;
 
   /// if the value is `null` this means no reward was bought with health points
-  final KReward rewardAtTimeOfTransaction;
-  final Timestamp createdAt;
+  final KReward? rewardAtTimeOfTransaction;
+  final Timestamp? createdAt;
 
   bool get isIncrease => rewardAtTimeOfTransaction == null;
 
   const KHistoryItem({
-    @required this.id,
-    @required this.amount,
-    @required this.rewardAtTimeOfTransaction,
-    @required this.createdAt,
+    required this.id,
+    required this.amount,
+    required this.rewardAtTimeOfTransaction,
+    required this.createdAt,
   });
 
   KHistoryItem copyWith({
-    String id,
-    int amount,
-    KReward rewardAtTimeOfTransaction,
-    Timestamp createdAt,
+    String? id,
+    int? amount,
+    KReward? rewardAtTimeOfTransaction,
+    Timestamp? createdAt,
   }) {
     return KHistoryItem(
       id: id ?? this.id,

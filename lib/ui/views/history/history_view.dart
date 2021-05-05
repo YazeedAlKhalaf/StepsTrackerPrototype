@@ -25,7 +25,7 @@ class HistoryView extends StatelessWidget {
       builder: (
         BuildContext context,
         HistoryViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           appBar: AppBar(
@@ -70,7 +70,7 @@ class HistoryView extends StatelessWidget {
                                           )
                                         : Image.network(
                                             historyItem
-                                                .rewardAtTimeOfTransaction
+                                                .rewardAtTimeOfTransaction!
                                                 .images[0],
                                           ),
                                 title: Text(
@@ -92,9 +92,9 @@ class HistoryView extends StatelessWidget {
                                                 "${historyItem.isIncrease ? "+" : "-"}",
                                             "amount": "${historyItem.amount}",
                                             "rewardName":
-                                                "${historyItem.rewardAtTimeOfTransaction.name}",
+                                                "${historyItem.rewardAtTimeOfTransaction!.name}",
                                             "rewardVendor":
-                                                "${historyItem.rewardAtTimeOfTransaction.vendor}",
+                                                "${historyItem.rewardAtTimeOfTransaction!.vendor}",
                                           },
                                         ),
                                   style: TextStyle(
@@ -106,7 +106,7 @@ class HistoryView extends StatelessWidget {
                                 subtitle: Text(
                                   intl.DateFormat("hh:mm a - dd MMM, yyyy")
                                       .format(
-                                    historyItem.createdAt.toDate(),
+                                    historyItem.createdAt!.toDate(),
                                   ),
                                 ),
                                 onTap: () {
@@ -122,7 +122,7 @@ class HistoryView extends StatelessWidget {
                                         .tr(
                                       namedArgs: {
                                         "couponCode":
-                                            "${historyItem.rewardAtTimeOfTransaction.couponCode}",
+                                            "${historyItem.rewardAtTimeOfTransaction!.couponCode}",
                                       },
                                     ),
                                     negativeAction: (

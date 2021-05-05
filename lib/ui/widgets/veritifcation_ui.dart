@@ -11,9 +11,9 @@ class VerificationUI extends StatelessWidget {
   final void Function() onPressed;
 
   const VerificationUI({
-    Key key,
-    @required this.controller,
-    @required this.onPressed,
+    Key? key,
+    required this.controller,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ class VerificationUI extends StatelessWidget {
             LocaleKeys.widgets_verification_ui_be_patient_sms_code_sent.tr(),
             style: TextStyle(
               fontSize: 12,
-              color: Theme.of(context).textTheme.caption.color,
+              color: Theme.of(context).textTheme.caption!.color,
             ),
           ),
           const SizedBox(height: 25),
@@ -55,8 +55,8 @@ class VerificationUI extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            validator: (String verificationCode) {
-              return validateVerificationCode(verificationCode);
+            validator: (String? verificationCode) {
+              return validateVerificationCode(verificationCode!);
             },
           ),
           const SizedBox(height: 25),

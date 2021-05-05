@@ -1,11 +1,11 @@
+import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Utils {
   static String formatPhoneNumber({
-    @required String phoneNumber,
+    required String phoneNumber,
   }) {
     String phoneNumberFormatted = phoneNumber;
     if (phoneNumber.startsWith("009665")) {
@@ -29,11 +29,11 @@ class Utils {
     return phoneNumberFormatted;
   }
 
-  static Future<File> pickImage() async {
-    final PickedFile pickedFile = await ImagePicker().getImage(
+  static Future<File?> pickImage() async {
+    final PickedFile? pickedFile = await ImagePicker().getImage(
       source: ImageSource.gallery,
     );
 
-    return File(pickedFile.path);
+    return pickedFile != null ? File(pickedFile.path) : null;
   }
 }

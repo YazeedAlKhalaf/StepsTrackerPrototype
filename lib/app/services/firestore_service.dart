@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:steps_tracker/app/models/k_error.dart';
 
 import 'package:steps_tracker/app/models/k_history_item.dart';
 import 'package:steps_tracker/app/models/k_reward.dart';
@@ -27,7 +27,7 @@ class FirestoreService {
   /// create user with provided user model.
   /// may return error in case there is.
   Future<dynamic> createUser({
-    @required KUser user,
+    required KUser user,
   }) async {
     try {
       await _usersCollection.doc(user.id).set(user.toMap());
@@ -40,12 +40,13 @@ class FirestoreService {
   /// get user with provided `userId`.
   /// may return error in case there is.
   Future<dynamic> getUser({
-    @required String userId,
+    required String userId,
   }) async {
     try {
       final DocumentSnapshot documentSnapshot =
           await _usersCollection.doc(userId).get();
-      final KUser user = KUser.fromMap(documentSnapshot.data());
+      final KUser user =
+          KUser.fromMap(documentSnapshot.data() as Map<String, dynamic>);
       print("Got user with data: ${user.toString()}");
 
       return user;
@@ -55,8 +56,8 @@ class FirestoreService {
   }
 
   Future<dynamic> updateStepsCount({
-    @required String userId,
-    @required int newStepsCount,
+    required String? userId,
+    required int newStepsCount,
   }) async {
     try {
       final DocumentSnapshot documentSnapshot = await _usersCollection
@@ -90,14 +91,15 @@ class FirestoreService {
       }
 
       final KUser currentUserData = KUser.fromMap(
-        (await _usersCollection.doc(userId).get()).data(),
+        (await _usersCollection.doc(userId).get()).data()
+            as Map<String, dynamic>,
       );
 
       /// increase total steps count by 1.
       /// by difference between old and new step count. (future update)
       await _usersCollection.doc(userId).update({
         "stepsCount": FieldValue.increment(
-          newStepsCount - currentUserData.stepsCount,
+          newStepsCount - currentUserData.stepsCount!,
         ),
       });
     } catch (exception) {
@@ -115,7 +117,8 @@ class FirestoreService {
 
       List<KUser> userList = <KUser>[];
       querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
-        userList.add(KUser.fromMap(documentSnapshot.data()));
+        userList.add(
+            KUser.fromMap(documentSnapshot.data() as Map<String, dynamic>));
       });
 
       return userList;
@@ -132,7 +135,8 @@ class FirestoreService {
 
       List<KReward> rewardList = <KReward>[];
       querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
-        rewardList.add(KReward.fromMap(documentSnapshot.data()));
+        rewardList.add(
+            KReward.fromMap(documentSnapshot.data() as Map<String, dynamic>));
       });
 
       return rewardList;
@@ -145,8 +149,8 @@ class FirestoreService {
   /// provide the [historyItem] with a `null` value for `id`, will be filled
   /// before pushing to firebase firestore.
   Future<dynamic> addHistoryItem({
-    @required String userId,
-    @required KHistoryItem historyItem,
+    required String? userId,
+    required KHistoryItem historyItem,
   }) async {
     try {
       final DocumentReference documentReference = _usersCollection
@@ -164,7 +168,7 @@ class FirestoreService {
 
   /// [updateHealthPoints] updates health points number and adds to history.
   Future<dynamic> updateHealthPoints({
-    @required String userId,
+    required String userId,
   }) async {
     try {
       /// increase health points by one.
@@ -178,7 +182,7 @@ class FirestoreService {
 
   /// [getHistoryItems] gets all history items of current user.
   Future<dynamic> getHistoryItems({
-    @required String userId,
+    required String userId,
   }) async {
     try {
       final QuerySnapshot querySnapshot = await _usersCollection
@@ -190,7 +194,8 @@ class FirestoreService {
       List<KHistoryItem> historyItems = <KHistoryItem>[];
 
       querySnapshot.docs.forEach((QueryDocumentSnapshot documentSnapshot) {
-        historyItems.add(KHistoryItem.fromMap(documentSnapshot.data()));
+        historyItems.add(KHistoryItem.fromMap(
+            documentSnapshot.data() as Map<String, dynamic>));
       });
 
       return historyItems;
@@ -201,11 +206,11 @@ class FirestoreService {
 
   /// [buyReward] buys a reward for the current user.
   Future<dynamic> buyReward({
-    @required KUser user,
-    @required KReward reward,
+    required KUser user,
+    required KReward reward,
   }) async {
     try {
-      if (user.healthPoints >= reward.price && reward.ownerId == null) {
+      if (user.healthPoints! >= reward.price! && reward.ownerId == null) {
         /// buy the reward for the user.
         await _rewardsCollection.doc(reward.id).update({
           "ownerId": user.id,
@@ -213,7 +218,7 @@ class FirestoreService {
 
         /// decrease health points of user.
         await _usersCollection.doc(user.id).update({
-          "healthPoints": FieldValue.increment(-reward.price),
+          "healthPoints": FieldValue.increment(-reward.price!),
         });
 
         /// add to history
@@ -234,10 +239,10 @@ class FirestoreService {
 
   /// [updateUser] updates user data.
   Future<dynamic> updateUser({
-    @required String userId,
-    @required String firstName,
-    @required String lastName,
-    @required String photoUrl,
+    required String userId,
+    required String? firstName,
+    required String? lastName,
+    required String? photoUrl,
   }) async {
     try {
       await _usersCollection.doc(userId).update({
@@ -251,9 +256,10 @@ class FirestoreService {
   }
 
   /// [updateUserLanguage] updates the user language in the database.
-  Future<void> updateUserLanguage({
-    @required String userId,
-    @required SupportedLocales newLanguage,
+  /// returns [KError] if there is an exception.
+  Future<dynamic> updateUserLanguage({
+    required String userId,
+    required SupportedLocales newLanguage,
   }) async {
     try {
       await _usersCollection.doc(userId).update(

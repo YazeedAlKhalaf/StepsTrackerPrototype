@@ -14,7 +14,7 @@ class StartupView extends StatelessWidget {
       builder: (
         BuildContext context,
         StartupViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           body: Center(

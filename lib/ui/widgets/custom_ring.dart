@@ -8,12 +8,12 @@ class CustomRing extends StatelessWidget {
   final double value;
 
   const CustomRing({
-    Key key,
-    @required this.diameter,
-    @required this.strokeWidth,
-    @required this.color,
-    @required this.backgroundColor,
-    @required this.value,
+    Key? key,
+    required this.diameter,
+    required this.strokeWidth,
+    required this.color,
+    required this.backgroundColor,
+    required this.value,
   }) : super(key: key);
 
   @override

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:steps_tracker/app/locator/locator.dart';
 
@@ -15,24 +14,24 @@ import 'package:steps_tracker/app/services/router_service.dart';
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  final FirestoreService _firestoreService = locator<FirestoreService>();
-  final RouterService _routerService = locator<RouterService>();
+  final FirestoreService? _firestoreService = locator<FirestoreService>();
+  final RouterService? _routerService = locator<RouterService>();
 
-  KUser _currentUser;
-  KUser get currentUser => _currentUser;
+  KUser? _currentUser;
+  KUser? get currentUser => _currentUser;
 
-  User get currentFirebaseUser => _firebaseAuth.currentUser;
+  User? get currentFirebaseUser => _firebaseAuth.currentUser;
 
   /// sends the verification code to the provided phone number.
   /// it also creates a user if `firstName` and `lastName` are provided, only on
   /// some android devices!
   /// may return error in case there is.
   Future<dynamic> sendVerificationCode({
-    @required String phoneNumber,
-    String firstName,
-    String lastName,
-    @required Function(String, int) codeSent,
-    @required Function(String) codeAutoRetrievalTimeout,
+    required String phoneNumber,
+    String? firstName,
+    String? lastName,
+    required Function(String, int?) codeSent,
+    required Function(String) codeAutoRetrievalTimeout,
   }) async {
     try {
       await _firebaseAuth.verifyPhoneNumber(
@@ -48,7 +47,7 @@ class AuthService {
           } else {
             await populateCurrentUser();
           }
-          await _routerService.router.pushAndPopUntil(
+          await _routerService!.router.pushAndPopUntil(
             MainRoute(),
             predicate: (_) => false,
           );
@@ -69,11 +68,11 @@ class AuthService {
   /// it also creates a user if `firstName` and `lastName` are provided.
   /// may return error in case there is.
   Future<dynamic> verifyPhoneNumber({
-    @required String verificationId,
-    @required String verificationCode,
-    @required String phoneNumber,
-    String firstName,
-    String lastName,
+    required String verificationId,
+    required String verificationCode,
+    required String phoneNumber,
+    String? firstName,
+    String? lastName,
   }) async {
     try {
       final AuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
@@ -100,12 +99,12 @@ class AuthService {
   /// [_registerUserInDb] uses the [FirestoreService] to save the user to the
   /// database with provided information.
   Future<void> _registerUserInDb({
-    @required String phoneNumber,
-    @required String firstName,
-    @required String lastName,
+    required String phoneNumber,
+    required String firstName,
+    required String lastName,
   }) async {
     _currentUser = KUser(
-      id: currentFirebaseUser.uid,
+      id: currentFirebaseUser!.uid,
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
@@ -115,8 +114,8 @@ class AuthService {
       language: SupportedLocales.en,
       createdAt: Timestamp.now(),
     );
-    await _firestoreService.createUser(
-      user: currentUser,
+    await _firestoreService!.createUser(
+      user: currentUser!,
     );
     await populateCurrentUser();
   }
@@ -135,8 +134,8 @@ class AuthService {
   /// from the database.
   Future<void> populateCurrentUser() async {
     if (isUserLoggedIn()) {
-      final dynamic user = await _firestoreService.getUser(
-        userId: currentFirebaseUser.uid,
+      final dynamic user = await _firestoreService!.getUser(
+        userId: currentFirebaseUser!.uid,
       );
 
       if (user is KUser) {

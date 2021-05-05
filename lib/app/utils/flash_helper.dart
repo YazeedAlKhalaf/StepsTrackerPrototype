@@ -7,7 +7,7 @@ class FlashHelper {
     return theme.dialogTheme.backgroundColor ?? theme.dialogBackgroundColor;
   }
 
-  static TextStyle _titleStyle(BuildContext context, [Color color]) {
+  static TextStyle _titleStyle(BuildContext context, [Color? color]) {
     final ThemeData theme = Theme.of(context);
     return (theme.dialogTheme.titleTextStyle ?? theme.textTheme.headline6)
             ?.copyWith(color: color) ??
@@ -17,7 +17,7 @@ class FlashHelper {
         );
   }
 
-  static TextStyle _contentStyle(BuildContext context, [Color color]) {
+  static TextStyle _contentStyle(BuildContext context, [Color? color]) {
     final ThemeData theme = Theme.of(context);
     return (theme.dialogTheme.contentTextStyle ?? theme.textTheme.bodyText2)
             ?.copyWith(color: color) ??
@@ -27,10 +27,10 @@ class FlashHelper {
         );
   }
 
-  static Future<T> successBar<T>(
+  static Future<T?> successBar<T>(
     BuildContext context, {
-    String title,
-    @required String message,
+    String? title,
+    required String message,
     Duration duration = const Duration(seconds: 3),
   }) {
     return showFlash<T>(
@@ -72,10 +72,10 @@ class FlashHelper {
     );
   }
 
-  static Future<T> errorBar<T>(
+  static Future<T?> errorBar<T>(
     BuildContext context, {
-    String title,
-    @required String message,
+    String? title,
+    required String message,
     Duration duration = const Duration(seconds: 3),
   }) {
     return showFlash<T>(
@@ -117,10 +117,10 @@ class FlashHelper {
     );
   }
 
-  static Future<T> infoBar<T>(
+  static Future<T?> infoBar<T>(
     BuildContext context, {
-    String title,
-    @required String message,
+    String? title,
+    required String message,
     Duration duration = const Duration(seconds: 3),
   }) {
     return showFlash<T>(
@@ -199,13 +199,13 @@ class FlashHelper {
   //     },
   //   );
   // }
-  static Future<T> simpleDialog<T>(
+  static Future<T?> simpleDialog<T>(
     BuildContext context, {
-    String title,
-    @required String message,
-    Color messageColor,
-    ChildBuilder<T> negativeAction,
-    ChildBuilder<T> positiveAction,
+    String? title,
+    required String message,
+    Color? messageColor,
+    ChildBuilder<T>? negativeAction,
+    ChildBuilder<T>? positiveAction,
   }) {
     return showFlash<T>(
       context: context,

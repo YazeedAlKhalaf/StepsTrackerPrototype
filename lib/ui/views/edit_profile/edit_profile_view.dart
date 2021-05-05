@@ -23,7 +23,7 @@ class EditProfileView extends StatelessWidget {
       builder: (
         BuildContext context,
         EditProfileViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           appBar: AppBar(
@@ -56,18 +56,19 @@ class EditProfileView extends StatelessWidget {
                             CircleAvatar(
                               backgroundImage: model.pickedImage != null
                                   ? FileImage(
-                                      model.pickedImage,
+                                      model.pickedImage!,
                                     )
-                                  : model.currentUser.photoUrl != null
-                                      ? NetworkImage(model.currentUser.photoUrl)
+                                  : (model.currentUser!.photoUrl != null
+                                      ? NetworkImage(
+                                          model.currentUser!.photoUrl!)
                                       : AssetImage(
                                           "assets/images/placeholder_person.jpg",
-                                        ),
+                                        )) as ImageProvider<Object>?,
                               radius: 50,
                             ),
                             TextButton(
                               onPressed: () async {
-                                final File image = await Utils.pickImage();
+                                final File? image = await Utils.pickImage();
 
                                 if (image != null) {
                                   model.setPickedImage(image);
@@ -103,8 +104,8 @@ class EditProfileView extends StatelessWidget {
                                         .views_edit_profile_first_name
                                         .tr(),
                                   ),
-                                  validator: (String firstName) {
-                                    return validateName(firstName, true);
+                                  validator: (String? firstName) {
+                                    return validateName(firstName!, true);
                                   },
                                 ),
                               ),
@@ -120,8 +121,8 @@ class EditProfileView extends StatelessWidget {
                                         .views_edit_profile_last_name
                                         .tr(),
                                   ),
-                                  validator: (String lastName) {
-                                    return validateName(lastName, false);
+                                  validator: (String? lastName) {
+                                    return validateName(lastName!, false);
                                   },
                                 ),
                               ),

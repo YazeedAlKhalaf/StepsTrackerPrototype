@@ -16,7 +16,7 @@ class AccountView extends StatelessWidget {
       builder: (
         BuildContext context,
         AccountViewModel model,
-        Widget child,
+        Widget? child,
       ) {
         return Scaffold(
           body: SafeArea(
@@ -41,13 +41,13 @@ class AccountView extends StatelessWidget {
                             CircleAvatar(
                               radius: 50,
                               backgroundImage:
-                                  model.currentUser?.photoUrl == null
+                                  (model.currentUser?.photoUrl == null
                                       ? AssetImage(
                                           "assets/images/placeholder_person.jpg",
                                         )
                                       : NetworkImage(
-                                          model.currentUser.photoUrl,
-                                        ),
+                                          model.currentUser!.photoUrl!,
+                                        )) as ImageProvider<Object>?,
                             ),
                             Column(
                               children: <Widget>[
