@@ -91,9 +91,9 @@ class EditProfileViewModel extends CustomBaseViewModel {
       setProgressText("Updating User Info");
       final dynamic updateUserResponse = await _firestoreService!.updateUser(
         userId: currentFirebaseUser!.uid,
-        firstName: currentUser!.firstName,
-        lastName: currentUser!.lastName,
-        photoUrl: profileImageUrl,
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        photoUrl: profileImageUrl ?? currentUser!.photoUrl,
       );
       setProgressText("Updated user data");
 
