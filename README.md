@@ -1,4 +1,8 @@
-# steps_tracker
+<p style="text-align: center;">
+<img src="assets/images/steps_tracker_logo.jpg" alt="Steps Tracker Logo" width="150px" />
+</p>
+
+# Steps Tracker
 
 ## Features
 
@@ -24,6 +28,15 @@
 - [ ] Give a fancy name for the health points, e.g. "Run Coins" 😂
 - [x] Support null-safety
 - [x] Strong security rules for cloud firestore
+
+## How to run the app?
+
+> You need [Flutter](https://flutter.dev) obviously installed and its requirements for running Android and iOS apps if on a macOS host.
+
+1. Clone this repo, it contains everything! (even secrets 😉).
+2. Run `flutter pub get` inside of the cloned repository folder.
+3. Run `flutter run`, and choose your preferred device to run the app on.
+4. Have fun! 🚀
 
 ## Requirements
 
