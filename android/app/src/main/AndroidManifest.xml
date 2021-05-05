@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     
    <application
-        android:label="steps_tracker"
+        android:label="Steps Tracker"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
