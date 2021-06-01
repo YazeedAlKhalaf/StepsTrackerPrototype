@@ -28,6 +28,60 @@
 - [x] Support null-safety
 - [x] Strong security rules for cloud firestore
 
+### Security Rules Used
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+    	allow create: if isSignedIn();
+      allow update: if isSignedIn() && isOwnerOfUserDocument(userId) && request.resource.data.stepsCount >= resource.data.stepsCount;
+      allow delete: if false;
+
+      allow get: if isSignedIn() && isOwnerOfUserDocument(userId);
+      allow list: if isSignedIn();
+
+      match /history/{historyItemId} {
+      	allow create: if isSignedIn() && isOwnerOfUserDocument(userId);
+      	allow update: if false;
+      	allow delete: if false;
+
+      	allow get: if isSignedIn() && isOwnerOfUserDocument(userId);
+      	allow list: if isSignedIn() && isOwnerOfUserDocument(userId);
+      }
+
+      match /steps/{stepsId} {
+      	allow create: if isSignedIn() && isOwnerOfUserDocument(userId);
+      	allow update: if isSignedIn() && isOwnerOfUserDocument(userId) && request.resource.data.stepsCount >= resource.data.stepsCount;
+      	allow delete: if false;
+
+      	allow get: if isSignedIn() && isOwnerOfUserDocument(userId);
+      	allow list: if isSignedIn() && isOwnerOfUserDocument(userId);
+      }
+    }
+
+    match /rewards/{rewardId} {
+    	allow create: if false;
+      allow update: if isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.healthPoints >= resource.data.price;
+      allow delete: if false;
+
+      allow get: if isSignedIn();
+      allow list: if isSignedIn();
+    }
+
+    function isSignedIn() {
+    	return request.auth != null;
+    }
+
+    function isOwnerOfUserDocument(userId) {
+    	return request.auth.uid == userId;
+    }
+  }
+}
+```
+
 ## How to run the app?
 
 > You need [Flutter](https://flutter.dev) obviously installed and its requirements for running Android and iOS apps if on a macOS host.
