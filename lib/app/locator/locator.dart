@@ -7,6 +7,6 @@ final GetIt locator = GetIt.instance;
 
 @InjectableInit(
   initializerName: r'$initLocator',
-  usesNullSafety: false,
+  usesNullSafety: true,
 )
 void configureDependencies() => $initLocator(locator);

@@ -44,6 +44,8 @@ class FlashHelper {
           controller: controller,
           horizontalDismissDirection: HorizontalDismissDirection.horizontal,
           backgroundColor: Colors.black87,
+          behavior: FlashBehavior.floating,
+          position: FlashPosition.bottom,
           child: FlashBar(
             title: title == null
                 ? null
@@ -54,7 +56,7 @@ class FlashHelper {
                       Colors.white,
                     ),
                   ),
-            message: Text(
+            content: Text(
               message,
               style: _contentStyle(
                 context,
@@ -65,7 +67,7 @@ class FlashHelper {
               Icons.check_circle,
               color: Colors.blue[300],
             ),
-            leftBarIndicatorColor: Colors.blue[300],
+            indicatorColor: Colors.blue[300],
           ),
         );
       },
@@ -89,6 +91,8 @@ class FlashHelper {
           controller: controller,
           horizontalDismissDirection: HorizontalDismissDirection.horizontal,
           backgroundColor: Colors.black87,
+          behavior: FlashBehavior.floating,
+          position: FlashPosition.bottom,
           child: FlashBar(
             title: title == null
                 ? null
@@ -99,7 +103,7 @@ class FlashHelper {
                       Colors.white,
                     ),
                   ),
-            message: Text(
+            content: Text(
               message,
               style: _contentStyle(
                 context,
@@ -110,7 +114,7 @@ class FlashHelper {
               Icons.warning,
               color: Colors.red[300],
             ),
-            leftBarIndicatorColor: Colors.red[300],
+            indicatorColor: Colors.red[300],
           ),
         );
       },
@@ -134,6 +138,8 @@ class FlashHelper {
           controller: controller,
           horizontalDismissDirection: HorizontalDismissDirection.horizontal,
           backgroundColor: Colors.black87,
+          behavior: FlashBehavior.floating,
+          position: FlashPosition.bottom,
           child: FlashBar(
             title: title == null
                 ? null
@@ -144,7 +150,7 @@ class FlashHelper {
                       Colors.white,
                     ),
                   ),
-            message: Text(
+            content: Text(
               message,
               style: _contentStyle(
                 context,
@@ -155,50 +161,13 @@ class FlashHelper {
               Icons.info_outline,
               color: Colors.green[300],
             ),
-            leftBarIndicatorColor: Colors.green[300],
+            indicatorColor: Colors.green[300],
           ),
         );
       },
     );
   }
 
-  // static Future<T> simpleDialog<T>(
-  //   BuildContext context, {
-  //   @required String title,
-  //   @required String message,
-  //   Color messageColor,
-  //   List<Widget> actions,
-  // }) {
-  //   return showFlash<T>(
-  //     context: context,
-  //     persistent: false,
-  //     builder: (
-  //       BuildContext context,
-  //       FlashController<T> controller,
-  //     ) {
-  //       return Flash<T>.dialog(
-  //         controller: controller,
-  //         backgroundColor: _backgroundColor(context),
-  //         margin: const EdgeInsets.only(
-  //           left: 40.0,
-  //           right: 40.0,
-  //         ),
-  //         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-  //         child: FlashBar(
-  //           title: Text(
-  //             title,
-  //             style: _titleStyle(context),
-  //           ),
-  //           message: Text(
-  //             message,
-  //             style: _contentStyle(context, messageColor),
-  //           ),
-  //           actions: actions,
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
   static Future<T?> simpleDialog<T>(
     BuildContext context, {
     String? title,
@@ -230,7 +199,7 @@ class FlashHelper {
                 title: title == null
                     ? null
                     : Text(title, style: _titleStyle(context)),
-                message:
+                content:
                     Text(message, style: _contentStyle(context, messageColor)),
                 actions: <Widget>[
                   if (negativeAction != null)

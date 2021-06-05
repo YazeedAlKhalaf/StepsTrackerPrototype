@@ -28,58 +28,69 @@ class StepsTrackerRouter extends _i1.RootStackRouter {
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    StartupRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i3.StartupView());
-    },
-    HomeRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeRouteArgs>();
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData,
-          child: _i4.HomeView(
+    StartupRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i3.StartupView();
+        }),
+    HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<HomeRouteArgs>();
+          return _i4.HomeView(
               key: args.key,
-              onSeeLeaderboardPressed: args.onSeeLeaderboardPressed));
-    },
-    RegisterRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i5.RegisterView());
-    },
-    LoginRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i6.LoginView());
-    },
-    LeaderboardRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i7.LeaderboardView());
-    },
-    MainRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i8.MainView());
-    },
-    AccountRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i9.AccountView());
-    },
-    RewardsRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i10.RewardsView());
-    },
-    HistoryRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i11.HistoryView());
-    },
-    SettingsRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i12.SettingsView());
-    },
-    EditProfileRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i13.EditProfileView());
-    },
-    BmiCalculatorRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i14.BmiCalculatorView());
-    }
+              onSeeLeaderboardPressed: args.onSeeLeaderboardPressed);
+        }),
+    RegisterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i5.RegisterView();
+        }),
+    LoginRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i6.LoginView();
+        }),
+    LeaderboardRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i7.LeaderboardView();
+        }),
+    MainRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i8.MainView();
+        }),
+    AccountRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i9.AccountView();
+        }),
+    RewardsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i10.RewardsView();
+        }),
+    HistoryRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i11.HistoryView();
+        }),
+    SettingsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i12.SettingsView();
+        }),
+    EditProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i13.EditProfileView();
+        }),
+    BmiCalculatorRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i14.BmiCalculatorView();
+        })
   };
 
   @override
